@@ -70,10 +70,9 @@ function Carousel({ children, className }, ref) {
               }
             }
           } else {
-            // target.querySelectorAll("audio").forEach((i) => i.pause());
-            const last = activeStubRef.current;
-            handler.onBlur(stubs.indexOf(last));
-            handler.onHide(stubs.indexOf(last));
+            const index = stubs.indexOf(activeStubRef.current);
+            handler.onBlur(index);
+            handler.onHide(index);
             style.display = "none";
           }
         }
@@ -98,8 +97,8 @@ function Carousel({ children, className }, ref) {
   }, [rootRef.current, cardsRef.current, stubsRef.current]);
 
   const onClickPrev = () => {
-    let n = activeStubRef.current.previousElementSibling;
-    if (n) {
+    let n = activeStubRef.current?.previousElementSibling;
+    if (n && n.classList.contains("stub")) {
       n.scrollIntoView({
         behavior: "smooth",
         block: "center",
@@ -109,8 +108,8 @@ function Carousel({ children, className }, ref) {
   };
 
   const onClickNext = () => {
-    let n = activeStubRef.current.nextElementSibling;
-    if (n) {
+    let n = activeStubRef.current?.nextElementSibling;
+    if (n && n.classList.contains("stub")) {
       n.scrollIntoView({
         behavior: "smooth",
         block: "center",
@@ -152,14 +151,12 @@ function Carousel({ children, className }, ref) {
         <div className="border-b-2 border-l-2 -mr-[2vmin] rotate-45 w-[5vmin] h-[5vmin] border-white"></div>
       </button>
 
-      <div ref={activeStubRef} className="min-w-[50%] text-center opacity-0">
-        &rarr;
-      </div>
+      <div className="min-w-[50%] text-center opacity-0">&rarr;</div>
       {Children.map(children, (_, i) => (
         <div
           key={i}
           ref={(n) => (stubsRef.current[i] = n)}
-          className="snap-center min-w-[80%] opacity-0 text-center"
+          className="stub snap-center min-w-[80%] opacity-0 text-center"
         ></div>
       ))}
       <div className="min-w-[50%] text-center opacity-0">&rarr;</div>
