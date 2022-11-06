@@ -18,7 +18,7 @@ body {
   color: white;
   margin: 0;
   --dimmed: rgba(255, 255, 255, 0.5);
-  font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: JustFontFenYuan, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
