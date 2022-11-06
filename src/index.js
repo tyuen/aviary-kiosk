@@ -17,3 +17,15 @@ root.render(
 reportWebVitals();
 
 window.addEventListener("contextmenu", (e) => e.preventDefault(), false);
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
+
+window.addEventListener(
+  "appinstalled",
+  () => {
+    alert("Great success!");
+  },
+  false
+);
