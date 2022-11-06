@@ -2,8 +2,8 @@
   "list": [
     {
       "img": "1-anas-strepera.jpg",
-      "audio": "04_Masked_laughingthrush.mp3",
-      "h1": "赤膀鸭",
+      "audio": "04_Masked_laughingthrush.wav",
+      "h1": "赤膀鴨",
       "dl": [
         [
           "特徵",
@@ -21,7 +21,7 @@
     },
     {
       "img": "2-falcated-duck.jpg",
-      "audio": "04_Masked_laughingthrush.mp3",
+      "audio": "04_Masked_laughingthrush.wav",
       "h1": "羅文鴨",
       "dl": [
         [
@@ -40,7 +40,7 @@
     },
     {
       "img": "3-anas-penelope.jpg",
-      "audio": "04_Masked_laughingthrush.mp3",
+      "audio": "04_Masked_laughingthrush.wav",
       "h1": "赤頸鴨",
       "dl": [
         [
@@ -59,7 +59,7 @@
     },
     {
       "img": "4-anas_zonorhyncha.jpg",
-      "audio": "04_Masked_laughingthrush.mp3",
+      "audio": "04_Masked_laughingthrush.wav",
       "h1": "中華斑嘴鴨",
       "dl": [
         [
@@ -75,7 +75,7 @@
     },
     {
       "img": "5-northern_shoveler.jpg",
-      "audio": "04_Masked_laughingthrush.mp3",
+      "audio": "04_Masked_laughingthrush.wav",
       "h1": "琵嘴鴨",
       "dl": [
         [

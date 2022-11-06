@@ -14,5 +14,5 @@
 }
 
 .nosmooth {
-  scroll-behavior: auto;
+  scroll-behavior: auto !important;
 }

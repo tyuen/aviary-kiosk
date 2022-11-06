@@ -15,9 +15,9 @@ function App() {
   }, []);
 
   const carouselRef = useRef<any>();
+  const mediaRef = useRef<HTMLAudioElement[]>([]);
 
   const bookRef = useRef<HTMLElement>();
-  const pageRef = useRef(0);
 
   const changePage = (i) => {
     const pages = bookRef.current.children;
@@ -36,28 +36,34 @@ function App() {
     if (bookRef.current) changePage(-1);
   }, [bookRef]);
 
+  useEffect(() => {
+    carouselRef.current.onBlur = (i) => {
+      if (i >= 0) mediaRef.current[i].pause();
+    };
+  }, [carouselRef]);
+
   return (
     <div className="flex flex-col items-stretch h-screen overflow-hidden text-white">
-      <header className="flex justify-between pt-1 bg-white">
+      <header className="flex justify-between pt-1 bg-stone-100">
         <img src="assets/header.png" className="h-20" alt="" />
         <img src="assets/hksar25.png" className="h-20 mr-2" alt="" />
       </header>
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
-        <article className="absolute inset-0 flex flex-col items-center justify-center p-0 m-0 overflow-hidden transition-all duration-500 translate-y-full opacity-0">
+        <article className="absolute inset-0 flex flex-col items-center justify-center p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
           <h1 className="mb-4 text-4xl">香港公園觀鳥園</h1>
 
           <nav className="grid grid-cols-4 gap-[3vmin] mb-5">
             {data.list.map((m, i) => (
               <button
                 key={i}
-                className="z-0 relative flex justify-center items-center text-center border-4 border-stone-700 rounded-lg w-[17vmin] h-[17vmin] text-xl text-white transition-transform"
-                style={{ textShadow: "0 0 20px #000" }}
+                className="z-0 relative flex justify-center items-center text-center border-4 border-stone-700 rounded-lg w-[17vmin] h-[17vmin] text-xl text-white transition-transform overflow-hidden active:scale-90"
+                style={{ textShadow: "0 0 4px #000, 0 0 10px #000" }}
                 onClick={(e) => changePage(i)}
               >
                 <img
                   src={"./data/" + m.img}
-                  className="absolute object-cover w-full min-h-full -z-10 active:scale-75"
+                  className="absolute object-cover w-full min-h-full -z-10"
                   alt=""
                 />
                 {m.h1}
@@ -71,17 +77,19 @@ function App() {
             {data.list.map((info, i) => (
               <div
                 key={i}
-                className="overflow-auto text-sm p-5 flex flex-col border-8 border-stone-600 rounded-xl bg-stone-800 max-w-[70%] h-[70%]"
+                className="overflow-auto text-sm p-5 flex flex-col border-8 border-stone-600 rounded-xl bg-stone-800 max-w-[70%] h-[90%]"
                 style={{ boxShadow: "0 0 100px black" }}
               >
-                <header className="text-lg">{info.h1}</header>
+                <header className="text-3xl text-center">{info.h1}</header>
                 <table cellSpacing={0} cellPadding={10} border={0}>
-                  {info.dl.map(([h2, text]) => (
-                    <tr>
-                      <td className="font-bold whitespace-nowrap">{h2}</td>
-                      <td>{text}</td>
-                    </tr>
-                  ))}
+                  <tbody>
+                    {info.dl.map(([h2, text], i) => (
+                      <tr key={i}>
+                        <td className="font-bold whitespace-nowrap">{h2}</td>
+                        <td>{text}</td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
                 <img
                   src={"./data/" + info.img}
@@ -90,9 +98,10 @@ function App() {
                 />
                 {info.audio ? (
                   <audio
+                    ref={(n) => (mediaRef.current[i] = n)}
                     src={"./data/" + info.audio}
                     controls
-                    className="self-center my-6"
+                    className="self-center mt-6 shrink-0"
                   />
                 ) : null}
               </div>
@@ -102,7 +111,7 @@ function App() {
           <footer className="flex flex-col items-center mb-5">
             <SwipeIntro />
             <button
-              className="px-4 py-1 text-lg text-white rounded bg-stone-600"
+              className="px-4 py-1 text-lg text-white border rounded border-stone-600"
               onClick={() => changePage(-1)}
             >
               返回主頁
