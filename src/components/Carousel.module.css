@@ -1,0 +1,18 @@
+.noscrollbar {
+  scrollbar-color: rgba(128 128 128/0.2) transparent;
+  scrollbar-width: thin;
+}
+.noscrollbar::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+.noscrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.noscrollbar::-webkit-scrollbar-thumb {
+  background: rgba(128 128 128/0.2);
+}
+
+.nosmooth {
+  scroll-behavior: auto;
+}

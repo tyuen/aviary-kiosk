@@ -1,0 +1,35 @@
+.finger {
+  width: 80px;
+  height: 80px;
+  font-size: 20pt;
+  margin: -40px 0 3vmin 100px;
+  animation: finger 6s infinite alternate-reverse;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+@keyframes finger {
+  15% {
+    transform: rotateZ(-10deg) scale(0.8);
+    opacity: 0.6;
+  }
+  30% {
+    transform: translateX(-100px) rotateZ(-10deg) scale(0.8);
+    opacity: 0.6;
+  }
+  45% {
+    transform: translateX(-100px);
+  }
+  59% {
+    transform: translateX(-100px);
+  }
+  74% {
+    transform: translateX(-100px) rotateZ(-10deg) scale(0.8);
+    opacity: 0.6;
+  }
+  85% {
+    transform: rotateZ(-10deg) scale(0.8);
+    opacity: 0.6;
+  }
+}

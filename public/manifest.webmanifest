@@ -1,0 +1,21 @@
+{
+  "short_name": "香港公園觀鳥園",
+  "name": "香港公園觀鳥園",
+  "description": "香港公園觀鳥園",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "148x148"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#555",
+  "theme_color": "#555"
+}
