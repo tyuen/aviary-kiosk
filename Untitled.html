@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="shortcut icon" content="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@300&display=swap"
+      rel="stylesheet"
+    /> -->
+    <style type="text/css">
+      html,
+      body,
+      main {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        background: #000;
+        font-family: serif;
+        font-size: 12pt;
+        user-select: none;
+      }
+      .carousel {
+        position: relative;
+        flex: 1;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        display: flex;
+        flex-flow: row nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-color: #444 #000;
+        scrollbar-width: thin;
+        outline: none;
+      }
+      .carousel::-webkit-scrollbar {
+        width: 1px;
+        height: 1px;
+      }
+      .carousel::-webkit-scrollbar-track {
+        background: #000;
+      }
+      .carousel::-webkit-scrollbar-thumb {
+        background: #444;
+        border-radius: 10px;
+      }
+
+      .stub {
+        scroll-snap-align: center;
+        min-width: 80%;
+        opacity: 0.01;
+        color: white;
+        font-size: 20pt;
+        text-align: center;
+      }
+      .stub-pad,
+      .stub:nth-child(2n) {
+        background: #444;
+      }
+      .stub-pad {
+        min-width: 50%;
+        opacity: 0.01;
+        color: white;
+        font-size: 20pt;
+        text-align: center;
+      }
+      .cards {
+        list-style: none;
+        position: sticky;
+        z-index: 1;
+        overflow: hidden;
+        margin: 0 -100% 0 0;
+        padding: 0;
+        left: 0;
+        top: 0;
+        min-width: 100%;
+        min-height: 100%;
+        perspective: 10cm;
+      }
+      .cards > * {
+        position: absolute;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .card-content {
+        box-sizing: border-box;
+        overflow: auto;
+        margin: 0;
+        padding: 1%;
+        display: flex;
+        flex-flow: column;
+        border: 15px solid #666;
+        border-radius: 2vw;
+        box-shadow: 0 0 100px black;
+        background: #444;
+        color: white;
+        max-width: 70%;
+        height: 70%;
+      }
+      .nav-btn {
+        z-index: 3;
+        position: sticky;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 100%;
+        min-width: 10vmin;
+        height: 10vmin;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        cursor: default;
+      }
+      .nav-btn:active > * {
+        border-color: #666;
+        transform: rotateZ(45deg) scale(0.8);
+      }
+      .nav-btn > * {
+        transform: rotateZ(45deg);
+        width: 5vmin;
+        height: 5vmin;
+        border: 0 solid white;
+      }
+    </style>
+    <style>
+      .screens {
+        flex: 1;
+        z-index: 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .screens > * {
+        position: absolute;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: transform 0.7s, opacity 0.7s;
+      }
+      .screens > .active {
+        z-index: 2;
+        opacity: 1;
+        transform: none;
+      }
+    </style>
+    <style>
+      .grid-menu {
+        display: grid;
+        grid-template: auto / repeat(4, 1fr);
+        gap: 3vmin;
+      }
+      .grid-menu > * {
+        appearance: none;
+        background: none;
+        overflow: hidden;
+        z-index: 0;
+        position: relative;
+        padding: 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 4px solid #444;
+        border-radius: 10px;
+        width: 17vmin;
+        height: 17vmin;
+        font-size: 16pt;
+        font-family: inherit;
+        color: white;
+        text-shadow: 0 0 20px black;
+        transition: transform 0.2s;
+      }
+      .grid-menu > * > img {
+        position: absolute;
+        width: 100%;
+        min-height: 100%;
+        z-index: -1;
+        object-fit: cover;
+      }
+      .grid-menu > button:active {
+        transform: scale(0.5);
+      }
+    </style>
+    <style>
+      #finger {
+        width: 80px;
+        height: 80px;
+        font-size: 20pt;
+        margin: -40px 0 3vmin 100px;
+        animation: finger 6s infinite alternate-reverse;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.8;
+      }
+      @keyframes finger {
+        15% {
+          transform: rotateZ(-10deg) scale(0.8);
+          opacity: 0.6;
+        }
+        30% {
+          transform: translateX(-100px) rotateZ(-10deg) scale(0.8);
+          opacity: 0.6;
+        }
+        45% {
+          transform: translateX(-100px);
+        }
+        59% {
+          transform: translateX(-100px);
+        }
+        74% {
+          transform: translateX(-100px) rotateZ(-10deg) scale(0.8);
+          opacity: 0.6;
+        }
+        85% {
+          transform: rotateZ(-10deg) scale(0.8);
+          opacity: 0.6;
+        }
+      }
+    </style>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <main style="display: flex; flex-flow: column; align-items: stretch">
+      <header>
+        <div style="background: white; padding-top: 5px; position: relative">
+          <img src="bannerlogo.png" style="height: 80px" />
+          <img
+            src="hksar25.png"
+            style="height: 100%; right: 10px; top: 0; position: absolute"
+          />
+        </div>
+      </header>
+
+      <section class="screens">
+        <article
+          id="menu"
+          class="active"
+          style="
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <h1 style="color: white; font-size: 20pt">香港公園觀鳥園</h1>
+          <div class="grid-menu">
+            <button onclick="showBird(1);">
+              黑臉噪鶥
+              <img src="04_Masked_Laughingthrush.jpg" />
+            </button>
+            <button onclick="showBird(2);">
+              鹦形目
+              <img src="05_Parrot.jpg" />
+            </button>
+            <button onclick="showBird(3);">
+              鸵鸟目
+              <img src="06_ostridge.jpg" />
+            </button>
+            <button onclick="showBird(4);">
+              鸡形目
+              <img src="07_pheasant.jpg" />
+            </button>
+            <button onclick="showBird(5);">
+              雁形目
+              <img src="08_goose.jpg" />
+            </button>
+            <button onclick="showBird(6);">
+              丹頂鶴
+              <img src="09_grus.jpg" />
+            </button>
+            <button onclick="showBird(7);">
+              歐石鴴
+              <img src="10_urhinus.jpg" />
+            </button>
+            <button onclick="showBird(8);">
+              南極企鵝
+              <img src="11_Penguin.jpg" />
+            </button>
+            <button onclick="showBird(9);">
+              貓頭鷹
+              <img src="12_owl.jpg" />
+            </button>
+            <button onclick="showBird(10);">
+              燕尾佛法僧
+              <img src="13_roller.jpg" />
+            </button>
+          </div>
+          <div style="font-size: 20pt">&nbsp;</div>
+        </article>
+
+        <article
+          id="slider"
+          style="display: flex; flex-flow: column; align-items: stretch"
+        >
+          <div id="carousel" class="carousel" tabindex="0">
+            <ol class="cards">
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">黑臉噪鶥</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        又叫「七姐妹」，體長約30厘米，臉部有黑色臉罩，全身偏褐色，臀部紅棕色。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>常出沒於灌木叢、樹林間和巿區公園。</td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        以群體形式於叢林下和地面覓食，主要食物包括果實和昆蟲。
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="04_Masked_Laughingthrush.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">鹦形目</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        通常来说，一个地区如果相对于其它地区来说，集中地拥有某个科的很多种类，那么该地区就很可能是这个科共同祖先的故乡。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>
+                        目前學界对于鹦形目的分类意见不一，某些学者认为应该将吸蜜鹦鹉独立作为本目的一个科──吸蜜鸚鵡科而非归入鹦鹉亚科当中。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        鹦鹉学舌是指一些鸟类可以模仿人类语言，因为鹦鹉作为该类鸟的代表而最为人知，所以鹦鹉学舌作为此类的通称。会学舌的鸟类所能掌握的词语程度不同。
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="05_Parrot.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">鸵鸟目</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        在鸟类全基因组测序分类系统中是鸟纲古颚下纲鸵鸟目（Struthioniformes）的唯一科，无法飞行是它的特征。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>
+                        1980年代，Sibley和Monroe根据DNA分析的结果对当时的传统鸟类分类作出重大调整。在鸟类DNA分类系统中，鸵鸟目變成鸵鸟下目
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        鸵鸟科共有五种，其中阿拉伯鸵鸟已于1941年灭绝。鸵鸟是现代生存的最大的鸟类，人类已经开始驯化它们，以获取羽毛和肉、卵。
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="06_ostridge.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">鸡形目</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        在生物分类学上是鸟纲中的一个目。人们通常把这一目的鸟中体形较大种的统称为“鸡”，体形较小的一些种类称为“鹑”。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>
+                        鸡形目的鸟在除南极洲外的各大洲都有分布，都是陆栖鸟类，并多为留鸟。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        鸡形目中的雉类体形较大，一般与家鸡相似，雌雄体色多不同，雄性羽毛多彩而艳丽，雌性羽色黯淡。
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="07_pheasant.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">雁形目</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        是脊索动物门鸟纲的一个目。本目的鸟在中文中通常被称为“鸭”或“雁”，包括了人们通常所说的鸭、潜鸭、天鹅、各种雁类等鸭雁类（或雁鸭类）的鸟。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>
+                        雁形目鸟类的分类主要有两类不同的观点，一类引用Sibley和Monroe的鸟类DNA分类系统将雁形目鸟类分为鸭科、叫鸭科
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        本目鸟类均为水栖性鸟类，体型大小不一，大者如天鹅体长可达1.5米，小者如棉凫体长仅30厘米。
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="08_goose.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">丹頂鶴</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        丹顶鹤是鹤类中的一种，纤细优雅、颜色黑白分明，因头顶有红色肉冠而得名。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>
+                        丹顶鹤繁殖地在三江平原和嫩江中下游地区、東西伯利亞和日本列島等地，它在中国东南沿海各地及长江下游
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        丹頂鶴身長約120公分至150公分，翅膀打開約200公分，丹顶鹤具备鹤类的特征，即三长——嘴长、颈长、腿长。
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="09_grus.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">歐石鴴</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        儘管被歸類成水鳥，但是它更喜歡棲息在乾燥的開放地面。歐亞石鴴大部分時間為夜行性動物
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>
+                        歐亞石鴴棲息於整個歐洲，非洲北部和亞洲西南部。它夏天時會遷徙到欧洲和亚洲其他温和的地区
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        歐亞石鴴在石鴴科類算是偏中型的水鳥，長度約38至46公分，翼展約76至88公分，重量約290至535克。
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="10_urhinus.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">南極企鵝</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        其頭部下面有一條黑色的紋帶，使牠們看上去好像在戴著盔帽一般，故又稱帽帶企鵝
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>
+                        南極企鵝是阿德利企鵝屬的三個成員之一。粒線體及細胞核的脫氧核糖核酸證據顯示
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        在陸地上，南極企鵝會築起一個個由石頭組成圓形的巢，每次孵約兩隻蛋，而孵蛋的工序則會由雄性和雌性輪流進行
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="11_Penguin.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">貓頭鷹</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        鸮形目是鸟纲中的目。眼睛大、嘴短而粗壮前端成钩状。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>
+                        本目鸟类通常一雄一雌配对，但个别种类如鬼鸮的配对是一雄多雌和一雌多雄。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        本目鸟类体形大小不一，大者如鵰鸮体长可达90厘米，小者如东方角鸮体长不及20厘米。
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="12_owl.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+
+              <li>
+                <div class="card-content">
+                  <div style="font-size: 120%">燕尾佛法僧</div>
+                  <table cellspacing="0" cellpadding="10" border="0">
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        特徵：
+                      </td>
+                      <td>
+                        这一目的鸟分布广泛，形态结构多样，各科特化程度高。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        分佈：
+                      </td>
+                      <td>
+                        佛法僧目的鸟在除两极和部分海洋岛屿外地区都有分布。很多科分布局限于热带、亚热带地区，其它科则分布比较广泛。其中鹃鴗科仅在马达加斯加岛有分布。
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: bold; white-space: nowrap">
+                        習性：
+                      </td>
+                      <td>
+                        这一目的鸟生存环境多样，鸣声简单。多数种类以昆虫和小动物为食，有些种类食鱼，还有些种类食果实。繁殖于洞穴中，多是双亲育雏，雏鸟晚成型。
+                      </td>
+                    </tr>
+                  </table>
+                  <img
+                    src="13_roller.jpg"
+                    style="
+                      flex: 1;
+                      width: 100%;
+                      min-height: 0;
+                      object-fit: contain;
+                    "
+                  />
+                  <audio
+                    src="04_Masked_Laughingthrush.wav"
+                    controls
+                    style="align-self: center; margin: 20px 0"
+                  />
+                </div>
+              </li>
+            </ol>
+
+            <button class="nav-btn" style="left: 0">
+              <div
+                style="border-width: 0 0 2px 2px; margin-right: -2vmin"
+              ></div>
+            </button>
+
+            <aside class="stub-pad">&rarr;</aside>
+            <div class="stub">1</div>
+            <div class="stub">2</div>
+            <div class="stub">3</div>
+            <div class="stub">4</div>
+            <div class="stub">5</div>
+            <div class="stub">6</div>
+            <div class="stub">7</div>
+            <div class="stub">8</div>
+            <div class="stub">9</div>
+            <div class="stub">10</div>
+            <aside class="stub-pad">&larr;</aside>
+
+            <button class="nav-btn" style="right: 0">
+              <div style="border-width: 2px 2px 0 0; margin-left: -2vmin"></div>
+            </button>
+          </div>
+          <footer
+            style="
+              display: flex;
+              flex-flow: column;
+              align-items: center;
+              margin: 0 0 20px 0;
+            "
+          >
+            <div id="finger">👆&#127995;</div>
+            <button
+              style="
+                font-size: 16pt;
+                appearance: none;
+                color: white;
+                padding: 0.2em 1em;
+                margin: 0;
+                background: #444;
+                border: 2px solid #666;
+                border-radius: 4px;
+                font-family: inherit;
+              "
+              onclick="showBird(false);"
+            >
+              返回主頁
+            </button>
+          </footer>
+        </article>
+      </section>
+    </main>
+    <script>
+      function showBird(bird) {
+        document
+          .querySelector("#menu")
+          .classList[bird ? "remove" : "add"]("active");
+        document
+          .querySelector("#slider")
+          .classList[bird ? "add" : "remove"]("active");
+        if (bird) {
+          let list = document.querySelectorAll("#carousel > .stub");
+          //list[bird];
+        }
+      }
+    </script>
+    <script>
+      (function (root) {
+        let stubMap = new Map();
+        let getMiddle = (rect) => (rect.left + rect.right) / 2;
+        let active = root.firstElementChild;
+
+        let handle = (changes) => {
+          let outer = root.getBoundingClientRect();
+          let middle = getMiddle(outer);
+
+          for (let c of changes) {
+            let target = stubMap.get(c.target);
+            let style = target.style;
+            if (c.isIntersecting) {
+              style.display = "flex";
+              let negate = getMiddle(c.boundingClientRect) < middle ? 1 : -1;
+              let r = c.intersectionRatio;
+              let deg = (75 - r * 75) * negate;
+              style.transform = `translateX(${
+                (1 - r) * -50 * negate
+              }%) rotateY(${deg}deg) scale(${0.1 + 0.9 * r},${0.5 + 0.5 * r})`;
+              style.zIndex = r >= 0.5 ? 2 : 1;
+              if (r < 0.8) {
+                target.querySelectorAll("audio").forEach((i) => i.pause());
+              }
+              if (r >= 1) active = c.target;
+            } else {
+              target.querySelectorAll("audio").forEach((i) => i.pause());
+              style.display = "none";
+            }
+          }
+        };
+
+        let obs = new IntersectionObserver(handle, {
+          root,
+          threshold: new Array(500)
+            .fill(0)
+            .map((_, i, arr) => i / (arr.length - 1)),
+        });
+
+        let cards = [...root.querySelector(".cards").children];
+        let stubs = [...root.children].filter((i) => i.className === "stub");
+
+        if (cards.length !== stubs.length) {
+          alert("modify stub count: " + cards.length + " vs " + stubs.length);
+          throw "!count";
+        }
+
+        stubs.forEach((s, i) => {
+          obs.observe(s);
+          stubMap.set(s, cards[i]);
+        });
+
+        let navBtns = root.querySelectorAll(".nav-btn");
+        navBtns[0].onclick = () => {
+          let n = active.previousElementSibling;
+          if (n)
+            n.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+              inline: "center",
+            });
+        };
+        navBtns[navBtns.length - 1].onclick = () => {
+          let n = active.nextElementSibling;
+          if (n)
+            n.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+              inline: "center",
+            });
+        };
+      })(document.querySelector("#carousel"));
+    </script>
+    <script>
+      window.addEventListener("contextmenu", (e) => e.preventDefault(), false);
+    </script>
+  </body>
+</html>
