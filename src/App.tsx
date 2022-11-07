@@ -10,8 +10,8 @@ function App() {
   useEffect(() => {
     //https://www.wetlandpark.gov.hk/tc/biodiversity/wildlife-watching-calendar/birds
     fetch("data.json")
-      .then((res) => res.json())
-      .then((res) => setData(res));
+      .then(res => res.json())
+      .then(res => setData(res));
   }, []);
 
   const carouselRef = useRef<any>();
@@ -19,12 +19,14 @@ function App() {
 
   const bookRef = useRef<HTMLElement>();
 
-  const changePage = (i) => {
+  const changePage = i => {
     const pages = bookRef.current.children;
     const carousel = carouselRef.current;
     if (i === -1) {
       pages[0].classList.add(styles.openpage);
       pages[1].classList.remove(styles.openpage);
+      //stop all audio
+      mediaRef.current.forEach(i => i.pause());
     } else {
       pages[0].classList.remove(styles.openpage);
       pages[1].classList.add(styles.openpage);
@@ -37,7 +39,7 @@ function App() {
   }, [bookRef]);
 
   useEffect(() => {
-    carouselRef.current.onBlur = (i) => {
+    carouselRef.current.onBlur = i => {
       if (i >= 0) mediaRef.current[i].pause();
     };
   }, [carouselRef]);
@@ -50,7 +52,7 @@ function App() {
       </header>
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
-        <article className="absolute inset-0 flex flex-col items-center justify-center p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
+        <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
           <h1 className="mb-4 text-4xl">香港公園觀鳥園</h1>
 
           <nav className="grid grid-cols-4 gap-[3vmin] mb-5">
@@ -59,11 +61,11 @@ function App() {
                 key={i}
                 className="z-0 relative flex justify-center items-center text-center border-4 border-stone-700 rounded-lg w-[17vmin] h-[17vmin] text-xl text-white transition-transform overflow-hidden active:scale-90"
                 style={{ textShadow: "0 0 4px #000, 0 0 10px #000" }}
-                onClick={(e) => changePage(i)}
+                onClick={e => changePage(i)}
               >
                 <img
                   src={"./data/" + m.img}
-                  className="absolute object-cover w-full min-h-full -z-10"
+                  className="absolute object-cover w-full min-h-full -z-10 opacity-70"
                   alt=""
                 />
                 {m.h1}
@@ -72,12 +74,12 @@ function App() {
           </nav>
         </article>
 
-        <article className="absolute inset-0 flex flex-col p-0 m-0 overflow-hidden transition-all duration-500 translate-y-full opacity-0">
-          <Carousel ref={carouselRef} className="flex-1">
+        <article className="absolute inset-0 flex flex-col items-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 translate-y-full opacity-0">
+          <Carousel ref={carouselRef} className="self-stretch grow">
             {data.list.map((info, i) => (
               <div
                 key={i}
-                className="overflow-auto text-sm p-5 flex flex-col border-8 border-stone-600 rounded-xl bg-stone-800 max-w-[70%] h-[90%]"
+                className="overflow-auto text-sm p-5 flex flex-col border-8 border-stone-600 rounded-xl bg-stone-800 max-w-[70%]"
                 style={{ boxShadow: "0 0 100px black" }}
               >
                 <header className="text-3xl text-center">{info.h1}</header>
@@ -91,14 +93,16 @@ function App() {
                     ))}
                   </tbody>
                 </table>
-                <img
-                  src={"./data/" + info.img}
-                  className="object-contain w-full min-h-0 grow"
-                  alt=""
-                />
+                <div className="relative grow min-h-[25vh]">
+                  <img
+                    src={"./data/" + info.img}
+                    className="absolute object-contain w-full h-full min-h-0"
+                    alt=""
+                  />
+                </div>
                 {info.audio ? (
                   <audio
-                    ref={(n) => (mediaRef.current[i] = n)}
+                    ref={n => (mediaRef.current[i] = n)}
                     src={"./data/" + info.audio}
                     controls
                     className="self-center mt-6 shrink-0"
@@ -107,16 +111,13 @@ function App() {
               </div>
             ))}
           </Carousel>
-
-          <footer className="flex flex-col items-center mb-5">
-            <SwipeIntro />
-            <button
-              className="px-4 py-1 text-lg text-white border rounded border-stone-600"
-              onClick={() => changePage(-1)}
-            >
-              返回主頁
-            </button>
-          </footer>
+          <SwipeIntro className="mb-3 -mt-10" />
+          <button
+            className="min-h-0 px-4 py-1 mb-10 text-lg text-white border rounded bg-stone-600 shrink-0"
+            onClick={() => changePage(-1)}
+          >
+            &larr; 返回主頁
+          </button>
         </article>
       </article>
     </div>

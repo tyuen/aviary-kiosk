@@ -19,16 +19,16 @@ function Carousel({ children, className }, ref) {
   const activeStubRef = useRef<HTMLDivElement>();
 
   const handlerRef = useRef({
-    show: (i) => {
+    show: i => {
       let node = stubsRef.current[i];
       let parent = node.parentElement;
       parent.classList.add(styles.nosmooth);
       parent.scrollLeft = node.offsetLeft;
       parent.classList.remove(styles.nosmooth);
     },
-    onBlur: (i) => {},
-    onFocus: (i) => {},
-    onHide: (i) => {},
+    onBlur: i => {},
+    onFocus: i => {},
+    onHide: i => {},
   });
 
   useImperativeHandle(ref, () => handlerRef.current, []);
@@ -45,7 +45,7 @@ function Carousel({ children, className }, ref) {
     const stubMap = new Map();
 
     let obs = new IntersectionObserver(
-      (changes) => {
+      changes => {
         let outer = root.getBoundingClientRect();
         let middle = calcMiddle(outer);
 
@@ -82,7 +82,7 @@ function Carousel({ children, className }, ref) {
         threshold: new Array(500)
           .fill(0)
           .map((_, i, arr) => i / (arr.length - 1)),
-      }
+      },
     );
 
     stubs.forEach((s, i) => {
@@ -91,7 +91,7 @@ function Carousel({ children, className }, ref) {
     });
 
     return () => {
-      stubs.forEach((s) => obs.unobserve(s));
+      stubs.forEach(s => obs.unobserve(s));
       stubMap.clear();
     };
   }, [rootRef.current, cardsRef.current, stubsRef.current]);
@@ -123,20 +123,20 @@ function Carousel({ children, className }, ref) {
       ref={rootRef}
       tabIndex={0}
       className={
-        "relative snap-mandatory z-0 snap-x scroll-smooth flex flex-row flex-nowrap overflow-x-auto overflow-y-hidden outline-hidden " +
+        "relative snap-mandatory z-0 snap-x scroll-smooth flex flex-row items-stretch flex-nowrap overflow-x-auto overflow-y-hidden outline-hidden " +
         styles.noscrollbar +
         " " +
         className
       }
     >
       <ol
-        className="sticky top-0 left-0 z-10 min-w-full min-h-full overflow-hidden list-none -mr-full"
+        className="sticky top-0 left-0 z-10 min-w-full min-h-full overflow-hidden -mr-full"
         style={{ perspective: "10cm" }}
       >
         {Children.map(children, (c, i) => (
           <li
             key={i}
-            ref={(n) => (cardsRef.current[i] = n)}
+            ref={n => (cardsRef.current[i] = n)}
             className="absolute inset-0 flex items-center justify-center overflow-hidden"
           >
             {c}
@@ -155,7 +155,7 @@ function Carousel({ children, className }, ref) {
       {Children.map(children, (_, i) => (
         <div
           key={i}
-          ref={(n) => (stubsRef.current[i] = n)}
+          ref={n => (stubsRef.current[i] = n)}
           className="stub snap-center min-w-[80%] opacity-0 text-center"
         ></div>
       ))}
