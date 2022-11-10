@@ -16,6 +16,25 @@ function App() {
 
   const carouselRef = useRef<any>();
   const mediaRef = useRef<HTMLAudioElement[]>([]);
+  useEffect(() => {
+    const list = mediaRef.current;
+    const onPlay = e => {
+      e.target.style.animation = "outline-pulse 2s ease-out infinite";
+    };
+    const onPause = e => {
+      e.target.style.animation = "none";
+    };
+    for (let n of list) {
+      n.addEventListener("play", onPlay, false);
+      n.addEventListener("pause", onPause, false);
+    }
+    return () => {
+      for (let n of list) {
+        n.removeEventListener("play", onPlay, false);
+        n.removeEventListener("pause", onPause, false);
+      }
+    };
+  }, [mediaRef.current.length]);
 
   const bookRef = useRef<HTMLElement>();
 
@@ -60,7 +79,9 @@ function App() {
               <button
                 key={i}
                 className="z-0 relative flex justify-center items-center text-center border-4 border-stone-700 rounded-lg w-[17vmin] h-[17vmin] text-xl text-white transition-transform overflow-hidden active:scale-90"
-                style={{ textShadow: "0 0 4px #000, 0 0 10px #000" }}
+                style={{
+                  textShadow: "0 0 4px #000, 0 0 10px #000",
+                }}
                 onClick={e => changePage(i)}
               >
                 <img
@@ -80,7 +101,10 @@ function App() {
               <div
                 key={i}
                 className="overflow-auto text-sm p-5 flex flex-col border-8 border-stone-600 rounded-xl bg-stone-800 max-w-[70%]"
-                style={{ boxShadow: "0 0 100px black" }}
+                style={{
+                  boxShadow:
+                    "0 0 100px black, inset 1px 1px 5px rgba(0 0 0/0.5)",
+                }}
               >
                 <header className="text-3xl text-center">{info.h1}</header>
                 <table cellSpacing={0} cellPadding={10} border={0}>
@@ -96,7 +120,7 @@ function App() {
                 <div className="relative grow min-h-[25vh]">
                   <img
                     src={"./data/" + info.img}
-                    className="absolute object-contain w-full h-full min-h-0"
+                    className="absolute object-scale-down w-full h-full min-h-0"
                     alt=""
                   />
                 </div>
@@ -105,7 +129,8 @@ function App() {
                     ref={n => (mediaRef.current[i] = n)}
                     src={"./data/" + info.audio}
                     controls
-                    className="self-center mt-6 shrink-0"
+                    controlsList="nodownload nofullscreen"
+                    className="self-center mt-6 rounded-full shrink-0"
                   />
                 ) : null}
               </div>
@@ -113,7 +138,7 @@ function App() {
           </Carousel>
           <SwipeIntro className="mb-3 -mt-10" />
           <button
-            className="min-h-0 px-4 py-1 mb-10 text-lg text-white border rounded bg-stone-600 shrink-0"
+            className="min-h-0 px-4 py-1 mb-10 text-lg text-white border rounded border-stone-400 bg-stone-600 shrink-0 active:scale-90"
             onClick={() => changePage(-1)}
           >
             &larr; 返回主頁

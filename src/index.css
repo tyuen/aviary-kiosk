@@ -18,13 +18,26 @@ body {
   color: white;
   margin: 0;
   --dimmed: rgba(255, 255, 255, 0.5);
-  font-family: JustFontFenYuan, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: JustFontFenYuan, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a:active {
   opacity: 0.8;
+}
+
+audio[controls] {
+  filter: brightness(90%) invert(90%);
+}
+
+@keyframes outline-pulse {
+  10% {
+    outline: rgba(0 0 0/0.3) solid 2px;
+  }
+  to {
+    outline: transparent solid 10px;
+  }
 }
