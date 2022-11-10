@@ -4,24 +4,29 @@ import SwipeIntro from "components/SwipeIntro";
 import Carousel from "components/Carousel";
 import { useState, useRef, useEffect } from "react";
 
+const sounds = {
+  sweep: new Audio("./assets/317273__dpoggioli.wav"),
+  flip: new Audio("./assets/75538__ra-gun.wav"),
+};
+
 function App() {
   const [data, setData] = useState({ list: [] });
 
   useEffect(() => {
     //https://www.wetlandpark.gov.hk/tc/biodiversity/wildlife-watching-calendar/birds
     fetch("data.json")
-      .then(res => res.json())
-      .then(res => setData(res));
+      .then((res) => res.json())
+      .then((res) => setData(res));
   }, []);
 
   const carouselRef = useRef<any>();
   const mediaRef = useRef<HTMLAudioElement[]>([]);
   useEffect(() => {
     const list = mediaRef.current;
-    const onPlay = e => {
+    const onPlay = (e) => {
       e.target.style.animation = "outline-pulse 2s ease-out infinite";
     };
-    const onPause = e => {
+    const onPause = (e) => {
       e.target.style.animation = "none";
     };
     for (let n of list) {
@@ -38,14 +43,15 @@ function App() {
 
   const bookRef = useRef<HTMLElement>();
 
-  const changePage = i => {
+  const changePage = (i) => {
     const pages = bookRef.current.children;
     const carousel = carouselRef.current;
     if (i === -1) {
       pages[0].classList.add(styles.openpage);
       pages[1].classList.remove(styles.openpage);
       //stop all audio
-      mediaRef.current.forEach(i => i.pause());
+      mediaRef.current.forEach((i) => i.pause());
+      sounds.sweep.play();
     } else {
       pages[0].classList.remove(styles.openpage);
       pages[1].classList.add(styles.openpage);
@@ -58,8 +64,17 @@ function App() {
   }, [bookRef]);
 
   useEffect(() => {
-    carouselRef.current.onBlur = i => {
-      if (i >= 0) mediaRef.current[i].pause();
+    carouselRef.current.onBlur = (i) => {
+      if (i >= 0) {
+        let m = mediaRef.current[i];
+        m.muted = false;
+        m.volume = 1;
+        m.pause();
+      }
+    };
+    carouselRef.current.onFocus = (i) => {
+      sounds.flip.currentTime = 0;
+      sounds.flip.play();
     };
   }, [carouselRef]);
 
@@ -82,7 +97,7 @@ function App() {
                 style={{
                   textShadow: "0 0 4px #000, 0 0 10px #000",
                 }}
-                onClick={e => changePage(i)}
+                onClick={(e) => changePage(i)}
               >
                 <img
                   src={"./data/" + m.img}
@@ -126,7 +141,7 @@ function App() {
                 </div>
                 {info.audio ? (
                   <audio
-                    ref={n => (mediaRef.current[i] = n)}
+                    ref={(n) => (mediaRef.current[i] = n)}
                     src={"./data/" + info.audio}
                     controls
                     controlsList="nodownload nofullscreen"
