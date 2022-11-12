@@ -19,8 +19,8 @@ function App() {
       .then((res) => setData(res));
   }, []);
 
-  const carouselRef = useRef<any>();
   const mediaRef = useRef<HTMLAudioElement[]>([]);
+
   useEffect(() => {
     const list = mediaRef.current;
     const onPlay = (e) => {
@@ -41,16 +41,19 @@ function App() {
     };
   }, [mediaRef.current.length]);
 
+  const carouselRef = useRef<any>();
   const bookRef = useRef<HTMLElement>();
 
   const changePage = (i) => {
     const pages = bookRef.current.children;
     const carousel = carouselRef.current;
     if (i === -1) {
+      //show main menu
       pages[0].classList.add(styles.openpage);
       pages[1].classList.remove(styles.openpage);
       //stop all audio
       mediaRef.current.forEach((i) => i.pause());
+      //play menu sound
       sounds.sweep.play();
     } else {
       pages[0].classList.remove(styles.openpage);
@@ -63,20 +66,19 @@ function App() {
     if (bookRef.current) changePage(-1);
   }, [bookRef]);
 
-  useEffect(() => {
-    carouselRef.current.onBlur = (i) => {
-      if (i >= 0) {
-        let m = mediaRef.current[i];
-        m.muted = false;
-        m.volume = 1;
-        m.pause();
-      }
-    };
-    carouselRef.current.onFocus = (i) => {
-      sounds.flip.currentTime = 0;
-      sounds.flip.play();
-    };
-  }, [carouselRef]);
+  const onBlur = (i) => {
+    if (i >= 0) {
+      let m = mediaRef.current[i];
+      m.muted = false;
+      m.volume = 1;
+      m.pause();
+    }
+  };
+
+  const onFocus = (i) => {
+    sounds.flip.currentTime = 0;
+    sounds.flip.play();
+  };
 
   return (
     <div className="flex flex-col items-stretch h-screen overflow-hidden text-white">
@@ -111,7 +113,12 @@ function App() {
         </article>
 
         <article className="absolute inset-0 flex flex-col items-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 translate-y-full opacity-0">
-          <Carousel ref={carouselRef} className="self-stretch grow">
+          <Carousel
+            ref={carouselRef}
+            className="self-stretch grow"
+            onBlur={onBlur}
+            onFocus={onFocus}
+          >
             {data.list.map((info, i) => (
               <div
                 key={i}

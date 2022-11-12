@@ -12,28 +12,37 @@ function calcMiddle(rect: DOMRect) {
   return (rect.left + rect.right) / 2;
 }
 
-function Carousel({ children, className }, ref) {
+const CB = (i: number) => {};
+
+function Carousel(
+  { children, className = "", onBlur = CB, onFocus = CB, onHide = CB },
+  ref
+) {
+  //scrollable container
   const rootRef = useRef<HTMLDivElement>();
+  //array of absolutely positioned cards
   const cardsRef = useRef<HTMLLIElement[]>([]);
+  //array of horizontal boxes with IntersectionObserver registered
   const stubsRef = useRef<HTMLDivElement[]>([]);
+  //currently visible box
   const activeStubRef = useRef<HTMLDivElement>();
 
-  const handlerRef = useRef({
-    show: (i) => {
-      let node = stubsRef.current[i];
-      if (node) {
-        let parent = node.parentElement;
-        parent.classList.add(styles.nosmooth);
-        parent.scrollLeft = node.offsetLeft;
-        parent.classList.remove(styles.nosmooth);
-      }
-    },
-    onBlur: (i) => {},
-    onFocus: (i) => {},
-    onHide: (i) => {},
-  });
-
-  useImperativeHandle(ref, () => handlerRef.current, []);
+  useImperativeHandle(
+    ref,
+    () => ({
+      //callback functions
+      show: (i: number) => {
+        let node = stubsRef.current[i];
+        if (node) {
+          let parent = node.parentElement;
+          parent.classList.add(styles.nosmooth);
+          parent.scrollLeft = node.offsetLeft;
+          parent.classList.remove(styles.nosmooth);
+        }
+      },
+    }),
+    []
+  );
 
   useEffect(() => {
     const root = rootRef.current;
@@ -41,8 +50,6 @@ function Carousel({ children, className }, ref) {
     const stubs = stubsRef.current;
 
     if (!root || cards.length <= 0 || stubs.length <= 0) return;
-
-    const handler = handlerRef.current;
 
     const stubMap = new Map();
 
@@ -52,29 +59,34 @@ function Carousel({ children, className }, ref) {
         let middle = calcMiddle(outer);
 
         for (let c of changes) {
-          let target = stubMap.get(c.target);
-          let style = target.style;
+          let stub = c.target as HTMLDivElement;
+          let style = stubMap.get(stub).style;
+
           if (c.isIntersecting) {
             style.display = "flex";
+
+            //is left side or right side
             let negate = calcMiddle(c.boundingClientRect) < middle ? 1 : -1;
             let r = c.intersectionRatio;
             let deg = (75 - r * 75) * negate;
+
             style.transform = `translateX(${
               (1 - r) * -50 * negate
             }%) rotateY(${deg}deg) scale(${0.1 + 0.9 * r},${0.5 + 0.5 * r})`;
             style.zIndex = r >= 0.5 ? 2 : 1;
+
             if (r >= 1) {
               const last = activeStubRef.current;
-              if (last !== c.target) {
-                handler.onBlur(stubs.indexOf(last));
-                handler.onFocus(stubs.indexOf(c.target as HTMLDivElement));
-                activeStubRef.current = c.target as HTMLDivElement;
+              if (last !== stub) {
+                onBlur(stubs.indexOf(last));
+                onFocus(stubs.indexOf(stub));
+                activeStubRef.current = stub;
               }
             }
           } else {
             const index = stubs.indexOf(activeStubRef.current);
-            handler.onBlur(index);
-            handler.onHide(index);
+            onBlur(index);
+            onHide(index);
             style.display = "none";
           }
         }
