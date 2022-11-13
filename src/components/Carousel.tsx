@@ -54,7 +54,7 @@ function Carousel(
     const stubMap = new Map();
 
     let obs = new IntersectionObserver(
-      (changes) => {
+      changes => {
         let outer = root.getBoundingClientRect();
         let middle = calcMiddle(outer);
 
@@ -105,7 +105,7 @@ function Carousel(
     });
 
     return () => {
-      stubs.forEach((s) => obs.unobserve(s));
+      stubs.forEach(s => obs.unobserve(s));
       stubMap.clear();
     };
   }, [rootRef.current, cardsRef.current, stubsRef.current]);
@@ -150,36 +150,40 @@ function Carousel(
         {Children.map(children, (c, i) => (
           <li
             key={i}
-            ref={(n) => (cardsRef.current[i] = n)}
-            className="absolute inset-0 flex items-center justify-center overflow-hidden"
+            ref={n => (cardsRef.current[i] = n)}
+            className="absolute inset-0 flex flex-col items-center overflow-hidden"
           >
+            <div className="flex-1"></div>
             {c}
+            <div className="flex-1"></div>
           </li>
         ))}
       </ol>
 
       <button
-        className="left-0 z-30 sticky flex justify-center items-center rounded-full min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75"
+        className="left-0 z-30 sticky rounded-full min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75"
         onClick={onClickPrev}
       >
-        <div className="border-b-2 border-l-2 -mr-[2vmin] rotate-45 w-[5vmin] h-[5vmin] border-white"></div>
+        <div className="absolute rotate-45 translate-x-1/2 translate-y-px border-b-2 border-l-2 border-stone-600 inset-5"></div>
+        <div className="absolute rotate-45 translate-x-1/2 border-b-2 border-l-2 border-white inset-5"></div>
       </button>
 
       <div className="min-w-[50%] text-center opacity-0">&rarr;</div>
       {Children.map(children, (_, i) => (
         <div
           key={i}
-          ref={(n) => (stubsRef.current[i] = n)}
+          ref={n => (stubsRef.current[i] = n)}
           className="stub snap-center min-w-[80%] opacity-0 text-center"
         ></div>
       ))}
       <div className="min-w-[50%] text-center opacity-0">&rarr;</div>
 
       <button
-        className="right-0 z-30 sticky flex justify-center items-center rounded-full min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75"
+        className="right-0 z-30 sticky rounded-full min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75"
         onClick={onClickNext}
       >
-        <div className="border-t-2 border-r-2 -ml-[2vmin] rotate-45 w-[5vmin] h-[5vmin] border-white"></div>
+        <div className="absolute rotate-45 -translate-x-1/2 translate-y-px border-t-2 border-r-2 border-stone-600 inset-5"></div>
+        <div className="absolute rotate-45 -translate-x-1/2 border-t-2 border-r-2 border-white inset-5"></div>
       </button>
     </div>
   );

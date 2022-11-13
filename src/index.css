@@ -15,6 +15,7 @@ body {
 }
 body {
   background: black;
+  /* background: black linear-gradient(180deg, #2F6DBB, #A9B7BD 40%, #E7D09F, #979BA0); */
   color: white;
   margin: 0;
   --dimmed: rgba(255, 255, 255, 0.5);
@@ -33,11 +34,11 @@ audio[controls] {
   filter: brightness(90%) invert(90%);
 }
 
-@keyframes outline-pulse {
-  10% {
-    outline: rgba(0 0 0/0.3) solid 2px;
+@keyframes border-pulse {
+  from {
+    border-color: transparent;
   }
   to {
-    outline: transparent solid 10px;
+    border-color: rgba(0 0 0/0.3);
   }
 }
