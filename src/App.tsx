@@ -5,9 +5,10 @@ import Carousel from "components/Carousel";
 import { useState, useRef, useEffect } from "react";
 
 const sounds = {
-  sweep: new Audio("./assets/317273__dpoggioli.wav"),
+  menu: new Audio("./assets/317273__dpoggioli.wav"),
   flip: new Audio("./assets/75538__ra-gun.wav"),
 };
+sounds.menu.volume = 0.5;
 
 function App() {
   const [data, setData] = useState({ list: [] });
@@ -55,7 +56,7 @@ function App() {
       //stop all audio
       mediaRef.current.forEach(i => i.pause());
       //play menu sound
-      sounds.sweep.play();
+      sounds.menu.play();
     } else {
       pages[0].classList.remove(styles.openpage);
       pages[1].classList.add(styles.openpage);
