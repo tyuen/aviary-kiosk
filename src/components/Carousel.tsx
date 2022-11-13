@@ -37,7 +37,9 @@ function Carousel(
           let parent = node.parentElement;
           parent.classList.add(styles.nosmooth);
           parent.scrollLeft = node.offsetLeft;
-          parent.classList.remove(styles.nosmooth);
+          setTimeout(() => {
+            parent.classList.remove(styles.nosmooth);
+          }, 100);
         }
       },
     }),

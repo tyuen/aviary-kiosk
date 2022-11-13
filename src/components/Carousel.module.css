@@ -15,4 +15,5 @@
 
 .nosmooth {
   scroll-behavior: auto !important;
+  scroll-snap-type: none !important;
 }
