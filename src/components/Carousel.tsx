@@ -16,7 +16,7 @@ const CB = (i: number) => {};
 
 function Carousel(
   { children, className = "", onBlur = CB, onFocus = CB, onHide = CB },
-  ref
+  ref,
 ) {
   //scrollable container
   const rootRef = useRef<HTMLDivElement>();
@@ -43,13 +43,13 @@ function Carousel(
         }
       },
     }),
-    []
+    [],
   );
 
   useEffect(() => {
     const root = rootRef.current;
-    const cards = cardsRef.current;
-    const stubs = stubsRef.current;
+    const cards = [...cardsRef.current];
+    const stubs = [...stubsRef.current];
 
     if (!root || cards.length <= 0 || stubs.length <= 0) return;
 
@@ -98,7 +98,7 @@ function Carousel(
         threshold: new Array(500)
           .fill(0)
           .map((_, i, arr) => i / (arr.length - 1)),
-      }
+      },
     );
 
     stubs.forEach((s, i) => {

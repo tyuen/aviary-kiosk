@@ -23,7 +23,9 @@ function App() {
   const mediaRef = useRef<HTMLAudioElement[]>([]);
 
   useEffect(() => {
-    const list = mediaRef.current;
+    //note that list might have holes because [ref] is being assigned
+    //by index and some cards don't have audio
+    const list = [...mediaRef.current];
     const onPlay = e => {
       e.target.style.animation =
         "border-pulse 0.7s ease-in-out infinite alternate";
@@ -32,13 +34,17 @@ function App() {
       e.target.style.animation = "none";
     };
     for (let n of list) {
-      n.addEventListener("play", onPlay, false);
-      n.addEventListener("pause", onPause, false);
+      if (n) {
+        n.addEventListener("play", onPlay, false);
+        n.addEventListener("pause", onPause, false);
+      }
     }
     return () => {
       for (let n of list) {
-        n.removeEventListener("play", onPlay, false);
-        n.removeEventListener("pause", onPause, false);
+        if (n) {
+          n.removeEventListener("play", onPlay, false);
+          n.removeEventListener("pause", onPause, false);
+        }
       }
     };
   }, [mediaRef.current.length]);
@@ -71,9 +77,12 @@ function App() {
   const onBlur = i => {
     if (i >= 0) {
       let m = mediaRef.current[i];
-      m.muted = false;
-      m.volume = 1;
-      m.pause();
+      //can be null if a card has no audio
+      if (m) {
+        m.muted = false;
+        m.volume = 1;
+        m.pause();
+      }
     }
   };
 

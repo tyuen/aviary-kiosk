@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <textarea style="width: 100%; height: 70vh" autofocus></textarea>
+  <input type="button" onclick="convert()" value="Convert" />
+  <script>
+    function convert() {
+      var input = document.querySelector("textarea");
+      var list = [];
+      var arr = input.value.split("\n");
+      for (var file of arr) {
+        if (!file) continue;
+        var i = file.slice(0, 2) * 1;
+        var name = file.match(/^\d\d_?(.+)\.[^.]+$/)[1].replace(/_/g, " ");
+        var ext = file.match(/\.[^.]+$/)[0].toLowerCase();
+
+        if (!list[i]) {
+          list[i] = {
+            img: null,
+            audio: null,
+            h1: name,
+            dl: [
+              [
+                "特徵",
+                "羅文鴨系中等體形的Mareca屬鳥類，體長約為50厘米左右。本物種雄雌異形異色，雄鳥頭部為帶金屬光澤的紫紅色，額部近嘴基處有一很小的白色色塊；後頸及頸側的羽毛略長",
+              ],
+              [
+                "習性",
+                "羅文鴨喜成隊棲息於內陸湖泊、沼澤、河流等處的平靜水面，較少見於沿海地區。白天本物種喜在近水的灌叢中休息，晨昏飛向農田湖泊的淺水處覓食。",
+              ],
+              [
+                "分佈",
+                "繁殖於西伯利亞東部，中國東北的中部和東部；越冬於朝鮮、日本、台灣、中南半島、緬甸和印度北部，中國東部自河北以南直到海南的大部分省份均可見本物種越冬。",
+              ],
+            ],
+          };
+        }
+        var row = list[i];
+
+        if (/\p{sc=Han}/u.test(name)) {
+          row.h1 = name.match(/\p{sc=Han}+/u)[0];
+          //row.dl[0][1] = name;
+        }
+
+        if (ext == ".wav" || ext == ".mp3") {
+          row.audio = file;
+        } else {
+          row.img = file;
+        }
+      }
+      list = list.filter(i => i);
+      input.value = JSON.stringify({ list });
+    }
+  </script>
+</html>
