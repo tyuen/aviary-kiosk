@@ -21,12 +21,14 @@ if (process.env.NODE_ENV !== "development") {
 
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js").then(reg => {
+      var n = document.getElementById("sw_status");
+      if (reg.installing) n.textContent = "installing";
       (reg.installing || reg.waiting || {}).onstatechange = e => {
         //"installing" -> "waiting" -> "activated"
         //Note that after "activated", you still need to reload page one more time
         //so that ServiceWorker can cache the external JS/CSS files before
         //you can go offline
-        document.getElementById("sw_status").textContent = e.target.state;
+        n.textContent = e.target.state;
       };
     });
   }

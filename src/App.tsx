@@ -72,32 +72,31 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-stretch h-screen overflow-hidden text-white">
+    <div className="flex flex-col items-stretch h-full overflow-hidden text-white">
       <header
         className="flex justify-between pt-1 bg-stone-100"
         style={{ boxShadow: "0 1px 10px rgba(0 0 0/.4)" }}
       >
-        <img src="assets/header.png" className="h-20" alt="" />
+        <img
+          src="assets/header.png"
+          className="h-20"
+          alt=""
+          onClick={() => changePage(-1)}
+        />
         <img src="assets/hksar25.png" className="h-20 mr-2" alt="" />
       </header>
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
         <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
-          <h1
-            className="mb-8 text-4xl"
-            style={{ textShadow: "1px 1px 5px rgba(0 0 0/1)" }}
-          >
-            香港公園觀鳥園
-          </h1>
+          <h1 className="mb-8 text-4xl">香港公園觀鳥園</h1>
 
           <nav className="grid grid-cols-4 gap-[3vmin] mb-5">
             {data.list.map((m, i) => (
               <button
                 key={i}
-                className="z-0 relative flex justify-center items-center text-center border-4 border-stone-700 rounded-lg w-[17vmin] h-[17vmin] text-xl text-white transition-transform overflow-hidden active:scale-90 bg-black"
+                className="z-0 relative flex justify-center items-center text-center border-4 border-stone-700 rounded-lg w-[16vmin] h-[16vmin] text-lg text-white transition-transform overflow-hidden active:scale-90 bg-black"
                 style={{
                   textShadow: "0 0 4px #000, 0 0 10px #000",
-                  boxShadow: "1px 1px 20px rgba(0 0 0/.5)",
                 }}
                 onClick={e => changePage(i)}
               >
