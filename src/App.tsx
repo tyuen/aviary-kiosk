@@ -22,32 +22,12 @@ function App() {
 
   const mediaRef = useRef<HTMLAudioElement[]>([]);
 
-  useEffect(() => {
-    //note that list might have holes because [ref] is being assigned
-    //by index and some cards don't have audio
-    const list = [...mediaRef.current];
-    const onPlay = e => {
-      e.target.style.animation =
-        "border-pulse 0.7s ease-in-out infinite alternate";
-    };
-    const onPause = e => {
-      e.target.style.animation = "none";
-    };
-    for (let n of list) {
-      if (n) {
-        n.addEventListener("play", onPlay, false);
-        n.addEventListener("pause", onPause, false);
-      }
-    }
-    return () => {
-      for (let n of list) {
-        if (n) {
-          n.removeEventListener("play", onPlay, false);
-          n.removeEventListener("pause", onPause, false);
-        }
-      }
-    };
-  }, [mediaRef.current.length]);
+  const onPlay = e => {
+    e.target.classList.add("border-pulse");
+  };
+  const onPause = e => {
+    e.target.classList.remove("border-pulse");
+  };
 
   const carouselRef = useRef<any>();
   const bookRef = useRef<HTMLElement>();
@@ -60,9 +40,9 @@ function App() {
       pages[0].classList.add(styles.openpage);
       pages[1].classList.remove(styles.openpage);
       //stop all audio
-      mediaRef.current.forEach(i => i.pause());
+      mediaRef.current.forEach(elm => elm?.pause());
       //play menu sound
-      sounds.menu.play();
+      sounds.menu.play()?.catch(e => {});
     } else {
       pages[0].classList.remove(styles.openpage);
       pages[1].classList.add(styles.openpage);
@@ -88,7 +68,7 @@ function App() {
 
   const onFocus = i => {
     sounds.flip.currentTime = 0;
-    sounds.flip.play();
+    sounds.flip.play()?.catch(e => {});
   };
 
   return (
@@ -114,7 +94,7 @@ function App() {
             {data.list.map((m, i) => (
               <button
                 key={i}
-                className="z-0 relative flex justify-center items-center text-center border-4 border-stone-700 rounded-lg w-[17vmin] h-[17vmin] text-xl text-white transition-transform overflow-hidden active:scale-90"
+                className="z-0 relative flex justify-center items-center text-center border-4 border-stone-700 rounded-lg w-[17vmin] h-[17vmin] text-xl text-white transition-transform overflow-hidden active:scale-90 bg-black"
                 style={{
                   textShadow: "0 0 4px #000, 0 0 10px #000",
                   boxShadow: "1px 1px 20px rgba(0 0 0/.5)",
@@ -124,6 +104,7 @@ function App() {
                 <img
                   src={"./data/" + m.img}
                   className="absolute object-cover w-full min-h-full -z-10 opacity-70"
+                  style={{ imageRendering: "crisp-edges" }}
                   alt=""
                 />
                 {m.h1}
@@ -173,6 +154,9 @@ function App() {
                     ref={n => (mediaRef.current[i] = n)}
                     src={"./data/" + info.audio}
                     controls
+                    preload="metadata"
+                    onPlay={onPlay}
+                    onPause={onPause}
                     controlsList="nodownload nofullscreen"
                     className="self-center mt-6 border-4 border-transparent rounded-full shrink-0"
                   />

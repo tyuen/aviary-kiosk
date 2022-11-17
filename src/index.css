@@ -39,6 +39,10 @@ audio[controls] {
   filter: brightness(90%) invert(90%);
 }
 
+.border-pulse {
+  animation: border-pulse 0.7s ease-in-out infinite alternate;
+}
+
 @keyframes border-pulse {
   from {
     border-color: transparent;
