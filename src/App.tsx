@@ -99,7 +99,7 @@ function App() {
             <div>{data.title[lang]}</div>
           </h1>
 
-          <div className="mb-6 justify-evenly mx-[13vw]">
+          <div className="mb-6 justify-evenly mx-[13vw] text-justify">
             {data.intro[lang]}
           </div>
 
@@ -140,7 +140,7 @@ function App() {
             {data.list.map((info, i) => (
               <div
                 key={i}
-                className="overflow-auto text-sm p-5 flex flex-col border-8 border-stone-600 rounded-xl bg-stone-800 max-w-[70%]"
+                className="overflow-auto text-sm p-5 flex flex-col leading-tight border-8 border-stone-600 rounded-xl bg-stone-800 max-w-[70%]"
                 style={{
                   boxShadow:
                     "0 0 100px rgba(0 0 0/.5), inset 1px 1px 8px rgba(0 0 0/.8)",
@@ -148,7 +148,7 @@ function App() {
                     "linear-gradient(45deg,#444,#333,#222,#444,#222)",
                 }}
               >
-                <header className="flex items-start justify-between text-3xl text-center">
+                <header className="flex items-start justify-between text-3xl leading-none text-center">
                   <div className="w-[6ch]"></div>
                   <div>{info.h1[lang]}</div>
                   <div className="w-[6ch] justify-end flex items-center">
@@ -173,7 +173,13 @@ function App() {
                   </tbody>
                 </table>
                 {info.img.map(src => (
-                  <div key={src} className="relative grow min-h-[25vh] mt-4">
+                  <div
+                    key={src}
+                    className={
+                      "relative grow mt-4 " +
+                      (info.img.length === 1 ? "min-h-[25vh]" : "min-h-[17vh]")
+                    }
+                  >
                     <img
                       src={"./data/" + src}
                       className="absolute object-scale-down w-full h-full min-h-0"
