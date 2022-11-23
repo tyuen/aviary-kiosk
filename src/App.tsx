@@ -99,7 +99,7 @@ function App() {
             <div>{data.title[lang]}</div>
           </h1>
 
-          <div className="mb-4 justify-evenly mx-[10vw]">
+          <div className="mb-6 justify-evenly mx-[10vw]">
             {data.intro[lang]}
           </div>
 
@@ -107,8 +107,9 @@ function App() {
             {data.list.map((m, i) => (
               <button
                 key={i}
-                className="z-0 relative flex justify-center items-end text-center border-4 border-stone-700 rounded-lg w-[16vmin] h-[16vmin] text-lg text-white transition-transform overflow-hidden active:scale-90 bg-black leading-tight p-2"
+                className="z-0 relative flex justify-center items-end text-center border-4 border-stone-700 rounded-lg w-[16vmin] h-[16vmin] text-lg text-white transition-transform overflow-hidden active:scale-90 bg-black leading-none p-2"
                 style={{
+                  hyphens: "auto",
                   textShadow: "0 0 4px #000, 0 0 10px #000",
                 }}
                 onClick={e => changePage(i)}
@@ -123,7 +124,7 @@ function App() {
               </button>
             ))}
           </nav>
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center gap-2 mt-6 text-lg">
             <Button onClick={() => setLang("z")}>中文</Button>
             <Button onClick={() => setLang("e")}>Eng</Button>
           </div>
@@ -150,8 +151,11 @@ function App() {
                 <header className="flex items-center justify-between text-3xl text-center">
                   <div className="w-[6ch]"></div>
                   <div>{info.h1[lang]}</div>
-                  <div className="w-[6ch] text-right">
-                    <Button onClick={() => setLang(lang === "z" ? "e" : "z")}>
+                  <div className="w-[6ch] justify-end flex items-center">
+                    <Button
+                      className="text-sm"
+                      onClick={() => setLang(lang === "z" ? "e" : "z")}
+                    >
                       {lang === "z" ? "Eng" : "中文"}
                     </Button>
                   </div>
@@ -193,7 +197,7 @@ function App() {
             ))}
           </Carousel>
           <SwipeIntro className="mb-3 -mt-10" />
-          <Button onClick={() => changePage(-1)}>
+          <Button className="mb-10" onClick={() => changePage(-1)}>
             &larr; {data.back[lang] || ""}
           </Button>
         </article>

@@ -1,7 +1,10 @@
 export default function Button({ children, onClick, className = "" }) {
   return (
     <button
-      className="min-h-0 px-4 py-1 mb-10 text-lg text-white border rounded-full border-stone-400 bg-stone-600 shrink-0 active:scale-90"
+      className={
+        "min-h-0 px-4 py-1 text-white border rounded-full border-stone-400 bg-stone-600 shrink-0 active:scale-90 " +
+        className
+      }
       style={{
         boxShadow:
           "1px 1px 20px rgba(0 0 0/.5), inset 1px 1px 53x rgba(0 0 0/.5)",

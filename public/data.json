@@ -18,14 +18,14 @@
       "h1": { "z": "樹麻雀", "e": "Eurasian Tree Sparrow" },
       "dl": [
         [
-          { "z": "我的身體特徵", "e": "Body features" },
+          { "z": "我的身體特徵", "e": "Body Features" },
           {
             "z": "我體長約 15 厘米，頭部栗色，白色面頰上有明顯的黑點，上身褐色有黑色條紋。",
             "e": "I am approximately 15cm long. I have a chestnut-coloured head with conspicuous black dots on my white cheeks. There are black stripes on my brown upper parts."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "草叢、灌木叢、樹林和巿區公園。",
             "e": "Bushes, thickets, woodland and urban parks."
@@ -46,14 +46,14 @@
       "h1": { "z": "紅耳鵯", "e": "Red-whiskered Bulbul" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "人類朋友又叫我做「高髻冠」，我體長約 20 厘米，黑色頭部上有獨特的直立冠羽，耳羽鮮紅色，面頰白色，臀部橙紅色。",
             "e": "Some humans call me “Topknot bun”. I am approximately 20cm long. I have raised crest feathers on my black head. My cheeks are white with red ear coverts and my butt is orange-red."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "灌木叢、樹林間和巿區公園。",
             "e": "Thickets, woodland and urban parks."
@@ -74,14 +74,14 @@
       "h1": { "z": "白頭鵯", "e": "Chinese Bulbul" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "我體長約19厘米。由於我眼後方至後枕有明顯的白色羽毛，像白髮蒼蒼的老翁，因此又名白頭翁。",
             "e": "I am approximately 19cm long. I am nicknamed ‘White-headed man’ because I have a large white patch stretching from behind the eyes to the nape, resembling an old man with white hair."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "灌木叢、樹林間和巿區公園。",
             "e": "Thickets, woodland and urban parks."
@@ -99,17 +99,17 @@
     {
       "img": ["04_Masked_Laughingthrush_ChungYunTak.JPG"],
       "audio": "04黑臉噪鶥_Masked_Laughingthrush.WAV",
-      "h1": { "z": "黑臉噪鶥", "e": "Masked Laughingthrush" },
+      "h1": { "z": "黑臉噪鶥", "e": "Masked Laughing\u200bthrush" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "我又叫做「七姐妹」，我體長約 30 厘米，臉部有黑色臉罩，全身偏褐色，臀部紅棕色。",
             "e": "I am approximately 30cm long. I am nicknamed ‘Seven Sisters’. My body is mostly brown with a black face and a reddish brown butt."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "灌木叢、樹林間和巿區公園。",
             "e": "Thickets, woodland and urban parks."
@@ -127,17 +127,17 @@
     {
       "img": ["05_Black-throated_laughingthrush_ChristinaYMChan.jpg"],
       "audio": "05_黑喉噪鶥Black_Throated_Laughingthrush.WAV",
-      "h1": { "z": "黑喉噪鶥", "e": "Black-throated laughingthrush" },
+      "h1": { "z": "黑喉噪鶥", "e": "Black-throated Laughing\u200bthrush" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 27 厘米，頭部灰色，臉部和喉部黑色，臉頰白色，身體褐色。",
             "e": "I am approximately 27cm long. I have a grey head, a black face and throat with white cheeks and my body is brown."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "灌木叢和樹林間。", "e": "Thickets and woodland." }
         ],
         [
@@ -155,14 +155,14 @@
       "h1": { "z": "珠頸斑鳩", "e": "Spotted Dove" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 30 厘米，由頸側至後頸有黑色羽毛，上面布滿細小的白點，猶如戴了一條珠鏈。",
             "e": "I am approximately 30cm long. I have black feathers extending from the side to the back of my neck, where tiny white dots scatter evenly as if I am wearing a pearl necklace."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "巿區公園、地面和樹林間。",
             "e": "Urban parks, on the ground and woodland."
@@ -186,14 +186,14 @@
       "h1": { "z": "鵲鴝", "e": "Oriental Magpie Robin" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "我又叫做「豬屎渣」，因我會發出類似「時時渣渣」的聲音。體長約 21 厘米，雌性雄性顏色不同，雄性全身羽毛黑色，腹部白色；雌性深灰色為主，腹部白色。",
             "e": "I am nicknamed “JAR” for my call which resembles the pronunciation of “jar“. I am approximately 21cm long. Plumage colour differs between males and females. Males are covered by black plumage with a white belly while females are mainly dark grey but also with a white belly."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite place" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "樹林間、灌木叢和巿區公園。",
             "e": "Urban parks, on the ground and woodland."
@@ -214,14 +214,14 @@
       "h1": { "z": "黑領椋鳥", "e": "Black-collared Starling" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 26 至 30 厘米，頭白色，雙眼周圍有外露的黃色皮膚，頸部有黑色領帶。",
             "e": "I am approximately 26 to 30cm long. I have a white head with yellow skin around the eyes and a black collar around my neck."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "巿區公園、樹林間和開闊環境。",
             "e": "Urban parks, woodland and open space."
@@ -242,14 +242,14 @@
       "h1": { "z": "八哥", "e": "Crested Myna" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 26 厘米，全身羽毛黑色，喙部與頭部之間長有明顯冠羽，飛行時翅膀有個明顯大白斑。",
             "e": "I am approximately 26cm long. I am covered by black plumage with crest feathers between my bill and head. When I fly, a conspicuous white patch can be seen on my wings."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "巿區公園、樹林間和開闊環境。",
             "e": "Urban parks, woodland and open space."
@@ -270,14 +270,14 @@
       "h1": { "z": "紅嘴藍鵲", "e": "Red-billed Blue Magpie" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 65 厘米，頭至胸部黑色，頭頂至後枕白色，喙和腳鮮紅色，上身藍色。有條紫藍色的長尾，尾下羽毛是黑白色斑狀的。",
             "e": " I am approximately 65cm long. My head and breast are black, white at the crown and the nape. My bill and legs are bright red and I have a blue upper part. Under my long purplish blue tail are feathers with black and white spots."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite place" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "樹林之間。", "e": "Woodland." }
         ],
         [
@@ -295,14 +295,14 @@
       "h1": { "z": "黑鳶", "e": "Black Kite" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "又叫「麻鷹」，體長約 58 至 69 厘米，全身羽毛大致深褐色，飛行時，初級飛羽會分開像人類的手指，尾巴末端會開叉。",
             "e": "I am approximately 58 to 69 cm long. I am mostly covered by dark brown plumage. My primaries split like human fingers and the tail forks during flight."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite place" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "開闊的環境。", "e": "Open space." }
         ],
         [
@@ -320,14 +320,14 @@
       "h1": { "z": "暗綠繡眼鳥", "e": "Swinhoe's White-eye" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "我又叫「相思」，體長約 11 厘米，有明顯的白色眼圏，喉部和臀部黃色，腹部白色。",
             "e": "I am approximately 11cm long. I have distinctive white eye-rings, yellow throat and butt, and a white belly."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "灌木叢和樹林間。", "e": "Thickets and woodland." }
         ],
         [
@@ -348,14 +348,14 @@
       "h1": { "z": "叉尾太陽鳥", "e": "Fork-tailed Sunbird" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 9 厘米，喙部尖細而向下彎曲，我們雄性叉尾太陽鳥的頭部黑色，頭頂至後枕湖水藍色，並帶有金屬光澤，喉部至上胸紅色，尾部有兩條針狀尾羽；而雌鳥叉尾太陽鳥則全身橄欖綠色。",
             "e": "I am approximately 9cm long. I have a pointy bill that curves downwards. However, we males have a black head with an area of metallic aquamarine blue extending from the crown to the nape, a red throat and upper breast, and two needle-like tail feathers at the butt, whereas females are covered by olive green plumage."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite place" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "開花的喬木。", "e": "Flowering trees." }
         ],
         [
@@ -376,14 +376,14 @@
       "h1": { "z": "噪鵑", "e": "Asian Koel" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 43 厘米，虹膜紅色，喙部蘋果綠色，雄性噪鵑全身藍黑色；雌鳥噪鵑全身深褐色，帶有淺色斑點。",
             "e": "I am approximately 43cm long. I have crimson irises and a greenish bill. Male Asian koels are covered by bluish black plumage while females are covered by dark brown plumage with light dots."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "高大的灌木叢和樹林間。", "e": "Tall thickets and woodland." }
         ],
         [
@@ -401,14 +401,14 @@
       "h1": { "z": "紫嘯鶇", "e": "Blue Whistling Thrush" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 33 厘米，全身羽毛紫藍色，帶有淺色斑點，在昏暗環境下，全身會看似黑色。",
             "e": "I am approximately 33cm long. I am covered by purplish blue plumage with light dots, though I appear to be black in dim environment."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite place" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "樹林之間。", "e": "Woodland." }
         ],
         [
@@ -426,14 +426,14 @@
       "h1": { "z": "小白鷺", "e": "Little Egret" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 61 厘米，嘴長、頸長、腳又長，全身羽毛白色，喙部和腳部黑色，腳趾黃色。",
             "e": "I am approximately 61cm long. I have long bill, neck and legs. My plumage is entirely white but my bill and legs are black, yet the toes are yellow."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "淡水池塘、河溪邊、沿海石灘。",
             "e": "Freshwater pond, streamside and rocky beach along the coast."
@@ -454,14 +454,14 @@
       "h1": { "z": "大白鷺", "e": "Great Egret" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約90厘米，嘴長、頸長、腳長。頸部能作S型屈曲。全身羽毛白色，喙部黃色，腳黑色。",
             "e": "I am approximately 90cm long. I have long bill, neck and legs. I can make my neck S-shaped. I am covered by white plumage with a yellow bill and black legs."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "淡水池塘、河溪邊、沿海石灘。",
             "e": "Freshwater pond, streamside and rocky beach along the coast."
@@ -482,14 +482,14 @@
       "h1": { "z": "池鷺", "e": "Chinese Pond Heron" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 46 厘米，嘴長、頸長、腳長，除了腹部和翅膀是白色之外，其餘羽毛均為褐色，頭部至胸部有縱紋。我在繁殖期內，頭部至胸部會變成酒紅色，而背部亦會變成灰藍色。",
             "e": "I am approximately 46cm long. I have long bill, neck and legs. My plumage is brown except the belly and wings which are white. There are also streaks on my head and breast. During breeding season, my head and breast turn deep red whereas my back becomes greyish blue."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "淡水池塘和河溪邊。", "e": "Freshwater pond and streamside." }
         ],
         [
@@ -507,14 +507,14 @@
       "h1": { "z": "夜鷺", "e": "Black-crowned Night Heron" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 61 厘米，嘴長、頸長、腳長，虹膜紅色，頭頂至背部深藍色，翅膀和腹部灰白色。",
             "e": "I am approximately 61cm long. I have long bill, neck and legs; and red irises. Deep blue feathers cover my crown to back while the wings and belly are greyish white."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "淡水池塘和河溪邊。", "e": "Freshwater pond and streamside." }
         ],
         [
@@ -532,14 +532,14 @@
       "h1": { "z": "蒼背山雀", "e": "Cinereous Tit" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 14 厘米，頭部黑色，面頰有大白斑，還有一道黑紋由喉部伸延至腹部中央。",
             "e": "I am approximately 14cm long. I have a black head and large white patches on my cheeks with a black stripe running from my throat to the centre of my belly."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           {
             "z": "較高大的灌木叢和樹林間。",
             "e": "Tall thickets and woodland."
@@ -560,14 +560,14 @@
       "h1": { "z": "長尾縫葉鶯", "e": "Common Tailorbird" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約 12 厘米，前額至頭頂紅褐色，背部橄欖綠色，我站立時喜愛上下搖動我的長尾羽。",
             "e": "I am approximately 12cm long.  My forehead to crown is brownish red while my back is olive green.  I love wagging my long tail when standing."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "灌木叢和樹林間。", "e": "Thickets and woodland." }
         ],
         [
@@ -585,14 +585,14 @@
       "h1": { "z": "大嘴烏鴉", "e": "Large-billed Crow" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約51厘米，全身黑色，喙部特別大和粗壯。",
             "e": "I am approximately 51cm long.  I am covered by black plumage.  My bill is particularly big and stout."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "巿區和樹林間。", "e": "Urban areas and woodland." }
         ],
         [
@@ -610,14 +610,14 @@
       "h1": { "z": "原鴿", "e": "Rock Dove" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約32厘米，羽毛顏色多變，頸部至胸部通常有金屬光澤，翅膀灰色，翼上有兩條黑色橫紋。我們並非香港原生鳥類，因為有人類朋友野放我們，我們才在香港定居。",
             "e": "I am approximately 32cm long. Colours of our feathers vary among individuals. I am normally in metallic colour from neck to breast, while my wings are grey with two black stripes. I am not a native bird. My species settled in Hong Kong because we were released to the wild by humans."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "巿區公園和街道。", "e": "Urban parks and streets. " }
         ],
         [
@@ -635,14 +635,14 @@
       "h1": { "z": "家鴉", "e": "House Crow" },
       "dl": [
         [
-          { "z": "身體特徵", "e": "Body features" },
+          { "z": "身體特徵", "e": "Body Features" },
           {
             "z": "體長約40厘米，全身黑色，頸部至前胸有明顯的灰色帶狀紋。我們並非香港原生鳥類，因為有人類朋友野放我們，我們才在香港定居。",
             "e": "I am approximately 40cm long.  I am covered by black plumage with conspicuous grey stripes running from neck to breast.  I am not a native bird.  My species settled in Hong Kong because we were released to the wild by humans."
           }
         ],
         [
-          { "z": "喜歡逗留的地方", "e": "Favourite places" },
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
           { "z": "巿區公園和街道。", "e": "Urban parks and streets." }
         ],
         [
