@@ -99,7 +99,7 @@ function App() {
             <div>{data.title[lang]}</div>
           </h1>
 
-          <div className="mb-6 justify-evenly mx-[10vw]">
+          <div className="mb-6 justify-evenly mx-[13vw]">
             {data.intro[lang]}
           </div>
 
@@ -148,7 +148,7 @@ function App() {
                     "linear-gradient(45deg,#444,#333,#222,#444,#222)",
                 }}
               >
-                <header className="flex items-center justify-between text-3xl text-center">
+                <header className="flex items-start justify-between text-3xl text-center">
                   <div className="w-[6ch]"></div>
                   <div>{info.h1[lang]}</div>
                   <div className="w-[6ch] justify-end flex items-center">
