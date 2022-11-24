@@ -7,6 +7,7 @@ self.addEventListener("install", e => {
       fetch("./data.json").then(res => res.json()),
     ]).then(([cache, json]) => {
       var files = new Set();
+      files.add("./");
       files.add("./index.html");
       //note we are still missing external JS/CSS files here so
       //after ServiceWorker is activated we need to manually
@@ -17,7 +18,7 @@ self.addEventListener("install", e => {
       files.add("./assets/75538__ra-gun.wav");
       files.add("./assets/317273__dpoggioli.wav");
       json.list.forEach(i => {
-        if (i.img) files.add("./data/" + i.img);
+        if (i.img) i.img.forEach(src => files.add("./data/" + src));
         if (i.audio) files.add("./data/" + i.audio);
       });
       return cache.addAll(Array.from(files.values()));

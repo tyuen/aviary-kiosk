@@ -124,10 +124,12 @@ function App() {
               </button>
             ))}
           </nav>
-          <div className="flex justify-center gap-2 mt-6 text-lg">
-            <Button onClick={() => setLang("z")}>中文</Button>
-            <Button onClick={() => setLang("e")}>Eng</Button>
-          </div>
+          {data.list.length > 0 ? (
+            <div className="flex justify-center gap-2 mt-6 text-sm">
+              <Button onClick={() => setLang("z")}>中文</Button>
+              <Button onClick={() => setLang("e")}>Eng</Button>
+            </div>
+          ) : null}
         </article>
 
         <article className="absolute inset-0 flex flex-col items-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 translate-y-full opacity-0">
@@ -160,7 +162,12 @@ function App() {
                     </Button>
                   </div>
                 </header>
-                <table cellSpacing={0} cellPadding={10} border={0}>
+                <table
+                  className="mt-4"
+                  cellSpacing={0}
+                  cellPadding={10}
+                  border={0}
+                >
                   <tbody>
                     {info.dl.map(([h2, text], i) => (
                       <tr key={i}>
@@ -196,7 +203,7 @@ function App() {
                     onPlay={onPlay}
                     onPause={onPause}
                     controlsList="nodownload nofullscreen"
-                    className="self-center mt-6 border-4 border-transparent rounded-full shrink-0"
+                    className="self-center mt-4 border-4 border-transparent rounded-full shrink-0"
                   />
                 ) : null}
               </div>
