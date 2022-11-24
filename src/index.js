@@ -33,9 +33,3 @@ if (process.env.NODE_ENV !== "development") {
     });
   }
 }
-
-window.addEventListener(
-  "appinstalled",
-  () => alert("Added to home screen"),
-  false,
-);

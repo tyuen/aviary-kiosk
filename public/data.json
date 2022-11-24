@@ -396,31 +396,6 @@
       ]
     },
     {
-      "img": ["15_Blue_whistling_thrush_ArthurYu.jpg"],
-      "audio": "15_紫嘯鶇Blue_Whistling_Thrush.mp3",
-      "h1": { "z": "紫嘯鶇", "e": "Blue Whistling Thrush" },
-      "dl": [
-        [
-          { "z": "身體特徵", "e": "Body Features" },
-          {
-            "z": "體長約 33 厘米，全身羽毛紫藍色，帶有淺色斑點，在昏暗環境下，全身會看似黑色。",
-            "e": "I am approximately 33cm long. I am covered by purplish blue plumage with light dots, though I appear to be black in dim environment."
-          }
-        ],
-        [
-          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
-          { "z": "樹林之間。", "e": "Woodland." }
-        ],
-        [
-          { "z": "習性", "e": "Behaviour" },
-          {
-            "z": "經常我行我素，喜愛單獨覓食。最愛吃果實和無脊椎動物。",
-            "e": "I always forage alone.  My favourite food is fruits and invertebrates."
-          }
-        ]
-      ]
-    },
-    {
       "img": ["16_Little_egret_ChungYunTak.JPG"],
       "audio": "16_小白鷺Little_Egret.wav",
       "h1": { "z": "小白鷺", "e": "Little Egret" },
@@ -477,8 +452,33 @@
       ]
     },
     {
+      "img": ["15_Blue_whistling_thrush_ArthurYu.jpg"],
+      "audio": "15_紫嘯鶇Blue_Whistling_Thrush.mp3",
+      "h1": { "z": "紫嘯鶇", "e": "Blue Whistling Thrush" },
+      "dl": [
+        [
+          { "z": "身體特徵", "e": "Body Features" },
+          {
+            "z": "體長約 33 厘米，全身羽毛紫藍色，帶有淺色斑點，在昏暗環境下，全身會看似黑色。",
+            "e": "I am approximately 33cm long. I am covered by purplish blue plumage with light dots, though I appear to be black in dim environment."
+          }
+        ],
+        [
+          { "z": "喜歡逗留的地方", "e": "Favourite Places" },
+          { "z": "樹林之間。", "e": "Woodland." }
+        ],
+        [
+          { "z": "習性", "e": "Behaviour" },
+          {
+            "z": "經常我行我素，喜愛單獨覓食。最愛吃果實和無脊椎動物。",
+            "e": "I always forage alone.  My favourite food is fruits and invertebrates."
+          }
+        ]
+      ]
+    },
+    {
       "img": ["17_Chinese_pond_heron_ChungYunTak.JPG"],
-      "audio": "17_夜鷺Black_Crowned_Night_Heron.wav",
+      "audio": "17_池鷺Chinese_Pond_Heron.wav",
       "h1": { "z": "池鷺", "e": "Chinese Pond Heron" },
       "dl": [
         [
@@ -503,7 +503,7 @@
     },
     {
       "img": ["18_Black-crowned_Night_Heron_ChungYunTak.JPG"],
-      "audio": "18_池鷺Chinese_Pond_Heron.wav",
+      "audio": "18_夜鷺Black_Crowned_Night_Heron.wav",
       "h1": { "z": "夜鷺", "e": "Black-crowned Night Heron" },
       "dl": [
         [
