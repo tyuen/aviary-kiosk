@@ -15,7 +15,15 @@ function calcMiddle(rect: DOMRect) {
 const CB = (i: number) => {};
 
 function Carousel(
-  { children, className = "", onBlur = CB, onFocus = CB, onHide = CB },
+  {
+    children,
+    className = "",
+    onBlur = CB,
+    onFocus = CB,
+    onHide = CB,
+    prevClassName = "",
+    nextClassName = "",
+  },
   ref,
 ) {
   //scrollable container
@@ -163,11 +171,14 @@ function Carousel(
       </ol>
 
       <button
-        className="left-0 z-30 sticky rounded-full min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75"
+        className={
+          "left-2 z-30 sticky min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75 " +
+          prevClassName
+        }
         onClick={onClickPrev}
       >
-        <div className="absolute rotate-45 translate-x-1/2 translate-y-px border-b-2 border-l-2 border-stone-600 inset-5"></div>
-        <div className="absolute rotate-45 translate-x-1/2 border-b-2 border-l-2 border-white inset-5"></div>
+        <div className="absolute rotate-45 translate-y-px border-b-2 border-l-2 translate-x-1/4 border-stone-600 inset-5"></div>
+        <div className="absolute rotate-45 border-b-2 border-l-2 border-white translate-x-1/4 inset-5"></div>
       </button>
 
       <div className="min-w-[50%] text-center opacity-0">&rarr;</div>
@@ -181,11 +192,14 @@ function Carousel(
       <div className="min-w-[50%] text-center opacity-0">&rarr;</div>
 
       <button
-        className="right-0 z-30 sticky rounded-full min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75"
+        className={
+          "right-2 z-30 sticky min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75 " +
+          nextClassName
+        }
         onClick={onClickNext}
       >
-        <div className="absolute rotate-45 -translate-x-1/2 translate-y-px border-t-2 border-r-2 border-stone-600 inset-5"></div>
-        <div className="absolute rotate-45 -translate-x-1/2 border-t-2 border-r-2 border-white inset-5"></div>
+        <div className="absolute rotate-45 translate-y-px border-t-2 border-r-2 -translate-x-1/4 border-stone-600 inset-5"></div>
+        <div className="absolute rotate-45 border-t-2 border-r-2 border-white -translate-x-1/4 inset-5"></div>
       </button>
     </div>
   );

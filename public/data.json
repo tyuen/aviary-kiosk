@@ -11,6 +11,10 @@
     "z": "返回",
     "e": "Back"
   },
+  "hear": {
+    "z": "聽我叫",
+    "e": "Hear My Call"
+  },
   "list": [
     {
       "img": ["01_Eurasian_tree_sparrow_ChungYunTak.JPG"],

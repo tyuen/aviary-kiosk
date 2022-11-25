@@ -16,6 +16,7 @@ function App() {
     title: {},
     intro: {},
     back: {},
+    hear: {},
     list: [],
   });
   const [lang, setLang] = useState("z");
@@ -81,7 +82,7 @@ function App() {
   return (
     <div className="flex flex-col items-stretch h-full overflow-hidden text-white">
       <header
-        className="flex items-center justify-between pt-1 bg-white"
+        className="flex items-center justify-center gap-6 pt-1 bg-white rounded-b-[50%_30%] pb-[10px]"
         style={{ boxShadow: "0 1px 10px rgba(0 0 0/.4)" }}
       >
         <img
@@ -94,12 +95,18 @@ function App() {
       </header>
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
-        <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
-          <h1 className="mb-4 text-3xl text-center">
+        <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0 bg-gradient-to-t from-sky-500 via-transparent">
+          <h1
+            className="mb-4 text-3xl text-center"
+            style={{ textShadow: "1px 1px 3px rgba(0 0 0/.7)" }}
+          >
             <div>{data.title[lang]}</div>
           </h1>
 
-          <div className="mb-6 justify-evenly mx-[13vw] text-justify">
+          <div
+            className="mb-6 justify-evenly mx-[13vw] text-justify"
+            style={{ textShadow: "1px 1px 3px rgba(0 0 0/.7)" }}
+          >
             {data.intro[lang]}
           </div>
 
@@ -126,8 +133,12 @@ function App() {
           </nav>
           {data.list.length > 0 ? (
             <div className="flex justify-center gap-2 mt-6 text-sm">
-              <Button onClick={() => setLang("z")}>中文</Button>
-              <Button onClick={() => setLang("e")}>Eng</Button>
+              <Button className="bg-black/60" onClick={() => setLang("z")}>
+                中文
+              </Button>
+              <Button className="bg-black/60" onClick={() => setLang("e")}>
+                Eng
+              </Button>
             </div>
           ) : null}
         </article>
@@ -138,79 +149,88 @@ function App() {
             className="self-stretch grow"
             onBlur={onBlur}
             onFocus={onFocus}
+            prevClassName="active:scale-90 rounded-xl bg-gradient-to-br from-black/70 border"
+            nextClassName="active:scale-90 bg-gradient-to-br from-black/70 rounded-xl border"
           >
             {data.list.map((info, i) => (
               <div
                 key={i}
-                className="overflow-auto text-sm p-5 flex flex-col leading-tight border-8 border-stone-600 rounded-xl bg-stone-800 max-w-[70%]"
+                className="relative overflow-auto text-sm p-5 flex flex-col leading-tight border-8 border-stone-600 rounded-xl max-w-[70%] bg-black/50"
                 style={{
                   boxShadow:
                     "0 0 100px rgba(0 0 0/.5), inset 1px 1px 8px rgba(0 0 0/.8)",
-                  backgroundImage:
-                    "linear-gradient(45deg,#444,#333,#222,#444,#222)",
                 }}
               >
-                <header className="flex items-start justify-between text-3xl leading-none text-center">
+                <img
+                  src={"./data/" + info.img[0]}
+                  className="absolute inset-0 object-cover w-full h-full -z-10 blur-2xl saturate-200 brightness-125"
+                  alt="bg"
+                />
+                <header className="flex items-start justify-between mb-4 text-3xl leading-none text-center">
                   <div className="w-[6ch]"></div>
-                  <div>{info.h1[lang]}</div>
+                  <div style={{ textShadow: "1px 1px 4px rgba(0 0 0/.7)" }}>
+                    {info.h1[lang]}
+                  </div>
                   <div className="w-[6ch] justify-end flex items-center">
                     <Button
                       className="text-sm"
                       onClick={() => setLang(lang === "z" ? "e" : "z")}
                     >
-                      {lang === "z" ? "Eng" : "中文"}
+                      {lang === "z" ? "Eng" : "中"}
                     </Button>
                   </div>
                 </header>
-                <table
-                  className="mt-4"
-                  cellSpacing={0}
-                  cellPadding={10}
-                  border={0}
-                >
-                  <tbody>
-                    {info.dl.map(([h2, text], i) => (
-                      <tr key={i}>
-                        <td className="font-bold align-top whitespace-nowrap">
-                          {h2[lang]}
-                        </td>
-                        <td className="align-top">{text[lang]}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+
+                {info.dl.map(([h2, text], i) => (
+                  <section
+                    key={i}
+                    className="flex gap-2 p-2 mb-3 border rounded rounded-tl-2xl rounded-br-2xl border-black/50 bg-white/10"
+                    style={{ boxShadow: "1px 1px 3px rgba(0 0 0/.5)" }}
+                  >
+                    <div className="font-bold italic w-[15ch] opacity-60">
+                      {h2[lang]}
+                    </div>
+                    <div className="flex-1">{text[lang]}</div>
+                  </section>
+                ))}
+
                 {info.img.map(src => (
                   <div
                     key={src}
                     className={
-                      "relative grow mt-4 " +
+                      "grow mt-4 max-h-[40vh] " +
                       (info.img.length === 1 ? "min-h-[25vh]" : "min-h-[17vh]")
                     }
                   >
                     <img
                       src={"./data/" + src}
-                      className="absolute object-scale-down w-full h-full min-h-0"
+                      className="object-scale-down h-full min-h-0 mx-auto rounded"
                       alt=""
                     />
                   </div>
                 ))}
                 {info.audio ? (
-                  <audio
-                    ref={n => (mediaRef.current[i] = n)}
-                    src={"./data/" + info.audio}
-                    controls
-                    preload="metadata"
-                    onPlay={onPlay}
-                    onPause={onPause}
-                    controlsList="nodownload nofullscreen"
-                    className="self-center mt-4 border-4 border-transparent rounded-full shrink-0"
-                  />
+                  <div className="flex items-center justify-center gap-2 mt-4">
+                    <div className="p-2 rounded-full bg-white/10">
+                      🎧 {data.hear[lang] || ""} &rarr;
+                    </div>
+                    <audio
+                      ref={n => (mediaRef.current[i] = n)}
+                      src={"./data/" + info.audio}
+                      controls
+                      preload="metadata"
+                      onPlay={onPlay}
+                      onPause={onPause}
+                      controlsList="nodownload nofullscreen"
+                      className="border-4 border-transparent rounded-full shrink-0"
+                    />
+                  </div>
                 ) : null}
               </div>
             ))}
           </Carousel>
           <SwipeIntro className="mb-3 -mt-10" />
-          <Button className="mb-10" onClick={() => changePage(-1)}>
+          <Button className="mb-10 bg-black/60" onClick={() => changePage(-1)}>
             &larr; {data.back[lang] || ""}
           </Button>
         </article>

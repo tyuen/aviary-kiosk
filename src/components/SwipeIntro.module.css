@@ -1,8 +1,8 @@
 .finger {
   width: 70px;
   height: 70px;
-  font-size: 50px;
-  animation: finger 10s linear infinite alternate-reverse;
+  font-size: 70px;
+  animation: finger 5s linear infinite alternate-reverse;
   display: flex;
   align-items: center;
   justify-content: center;

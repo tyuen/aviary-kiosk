@@ -14,8 +14,7 @@ body {
   overflow: hidden;
 }
 body {
-  background: black;
-  /* background: black linear-gradient(180deg, #2F6DBB, #A9B7BD 40%, #E7D09F, #979BA0); */
+  background: black linear-gradient(180deg, #2F6DBB, #A9B7BD 40%, #E7D09F, #979BA0);
   color: white;
   margin: 0;
   --dimmed: rgba(255, 255, 255, 0.5);
@@ -36,7 +35,7 @@ a:active {
 }
 
 audio[controls] {
-  filter: brightness(90%) invert(90%);
+  filter: invert(90%);
 }
 
 .border-pulse {
@@ -50,4 +49,12 @@ audio[controls] {
   to {
     border-color: rgba(0 0 0/0.3);
   }
+}
+
+.btn-3d {
+  color: white;
+  border: 1px solid #888;
+  border-radius: 9999px; 
+  box-shadow: 2px 2px 5px rgba(0 0 0/0.5), inset 1px 1px 3px rgba(0 0 0/0.5);
+  background-image: linear-gradient(45deg,rgba(255 255 255/.24),rgba(255 255 255/.2),rgba(255 255 255/.125),rgba(255 255 255/.24),rgba(255 255 255/.0125));
 }
