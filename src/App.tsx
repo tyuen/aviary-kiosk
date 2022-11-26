@@ -59,7 +59,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (bookRef.current) changePage(-1);
+    if (bookRef.current) changePage(12);
   }, [bookRef]);
 
   const onBlur = i => {
@@ -114,7 +114,7 @@ function App() {
             {data.list.map((m, i) => (
               <button
                 key={i}
-                className="z-0 relative flex justify-center items-end text-center border-4 border-stone-700 rounded-lg w-[16vmin] h-[16vmin] text-lg text-white transition-transform overflow-hidden active:scale-90 bg-black leading-none p-2"
+                className="z-0 relative flex justify-center items-end text-center nest-frame w-[16vmin] h-[16vmin] text-lg text-white transition-transform overflow-hidden active:scale-90 leading-none p-2"
                 style={{
                   hyphens: "auto",
                   textShadow: "0 0 4px #000, 0 0 10px #000",
@@ -123,7 +123,7 @@ function App() {
               >
                 <img
                   src={"./data/" + m.img[0]}
-                  className="absolute inset-0 object-cover w-full min-h-full -z-10 opacity-70"
+                  className="absolute inset-0 object-cover w-full min-h-full -z-10 brightness-[75%] rounded-lg"
                   style={{ imageRendering: "crisp-edges" }}
                   alt=""
                 />
@@ -155,17 +155,19 @@ function App() {
             {data.list.map((info, i) => (
               <div
                 key={i}
-                className="relative overflow-auto text-sm p-5 flex flex-col leading-tight border-8 border-stone-600 rounded-xl max-w-[70%] bg-black/50"
+                className="relative nest-frame overflow-visible text-sm p-5 flex flex-col leading-tight rounded-xl max-w-[70%] bg-black/50"
                 style={{
                   boxShadow:
-                    "0 0 100px rgba(0 0 0/.5), inset 1px 1px 8px rgba(0 0 0/.8)",
+                    "0 0 100px rgba(0 0 0/.5), inset 1px 1px 15px black",
                 }}
               >
-                <img
-                  src={"./data/" + info.img[0]}
-                  className="absolute inset-0 object-cover w-full h-full -z-10 blur-2xl saturate-200 brightness-125"
-                  alt="bg"
-                />
+                <div className="absolute inset-0 overflow-hidden -z-10 rounded-xl">
+                  <img
+                    src={"./data/" + info.img[0]}
+                    className="object-cover w-full h-full -z-10 blur-2xl saturate-200 brightness-125"
+                    alt="bg"
+                  />
+                </div>
                 <header className="flex items-start justify-between mb-4 text-3xl leading-none text-center">
                   <div className="w-[6ch]"></div>
                   <div style={{ textShadow: "1px 1px 4px rgba(0 0 0/.7)" }}>

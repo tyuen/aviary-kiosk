@@ -58,3 +58,8 @@ audio[controls] {
   box-shadow: 2px 2px 5px rgba(0 0 0/0.5), inset 1px 1px 3px rgba(0 0 0/0.5);
   background-image: linear-gradient(45deg,rgba(255 255 255/.24),rgba(255 255 255/.2),rgba(255 255 255/.125),rgba(255 255 255/.24),rgba(255 255 255/.0125));
 }
+
+.nest-frame {
+  border-image: url("../public/assets/nest.svg") 12 /  17.28pt / 0 round;
+  border-width: 13pt;
+}
