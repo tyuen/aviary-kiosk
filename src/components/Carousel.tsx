@@ -177,7 +177,7 @@ function Carousel(
         }
         onClick={onClickPrev}
       >
-        <div className="absolute rotate-45 translate-y-px border-b-2 border-l-2 translate-x-1/4 border-stone-600 inset-5"></div>
+        <div className="absolute rotate-45 translate-y-0.5 border-b-2 border-l-2 translate-x-1/4 border-stone-600 inset-5"></div>
         <div className="absolute rotate-45 border-b-2 border-l-2 border-white translate-x-1/4 inset-5"></div>
       </button>
 
@@ -198,7 +198,7 @@ function Carousel(
         }
         onClick={onClickNext}
       >
-        <div className="absolute rotate-45 translate-y-px border-t-2 border-r-2 -translate-x-1/4 border-stone-600 inset-5"></div>
+        <div className="absolute rotate-45 translate-y-0.5 border-t-2 border-r-2 -translate-x-1/4 border-stone-600 inset-5"></div>
         <div className="absolute rotate-45 border-t-2 border-r-2 border-white -translate-x-1/4 inset-5"></div>
       </button>
     </div>

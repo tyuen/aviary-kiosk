@@ -61,7 +61,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (bookRef.current) changePage(12);
+    if (bookRef.current) changePage(-1);
   }, [bookRef]);
 
   const onBlur = i => {
@@ -95,6 +95,38 @@ function App() {
         />
         <img src="assets/hksar25.png" className="my-3 mr-2 h-14" alt="" />
       </header>
+
+      <aside className="fixed left-0 w-full top-[8vh]">
+        <img
+          src="assets/clouds.svg"
+          className="absolute top-0 left-0 h-[15vh] anim-cloud"
+          style={{ animationDuration: "40s" }}
+          alt=""
+        />
+        <img
+          src="assets/clouds.svg"
+          className="absolute top-0 left-0 h-[10vh] anim-cloud"
+          style={{ animationDuration: "50s", animationDelay: "10s" }}
+          alt=""
+        />
+        <img
+          src="assets/clouds.svg"
+          className="absolute top-0 left-0 h-[5vh] anim-cloud"
+          style={{ animationDuration: "60s", animationDelay: "5s" }}
+          alt=""
+        />
+      </aside>
+
+      <footer className="fixed bottom-0 left-0 w-full h-[15vh]">
+        <div
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-50 -top-5"
+          style={{ backgroundImage: "url('./assets/grass.svg')" }}
+        ></div>
+        <div
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain"
+          style={{ backgroundImage: "url('./assets/grass.svg')" }}
+        ></div>
+      </footer>
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
         <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
@@ -206,7 +238,7 @@ function App() {
                       className="relative flex gap-2 p-2 mb-3 ml-5 border rounded rounded-tl-2xl rounded-br-2xl border-black/50 bg-white/10"
                       style={{ boxShadow: "1px 1px 3px rgba(0 0 0/.5)" }}
                     >
-                      <div className="absolute text-4xl -left-3 -top-3">
+                      <div className="absolute text-4xl -left-4 -top-2">
                         {paraIcons[i]}
                       </div>
                       <div className="font-bold w-[14ch] opacity-60 ml-7">
@@ -255,7 +287,7 @@ function App() {
             ))}
           </Carousel>
           <SwipeIntro className="mb-3 -mt-10" />
-          <Button className="mb-10 bg-black/60" onClick={() => changePage(-1)}>
+          <Button className="mb-20 bg-black/60" onClick={() => changePage(-1)}>
             &larr; {data.back[lang] || ""}
           </Button>
         </article>

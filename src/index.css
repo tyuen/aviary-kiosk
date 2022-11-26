@@ -65,3 +65,12 @@ audio[controls] {
   border-image-outset: 4px;
   border-width: 22px; */
 }
+
+.anim-cloud {
+  animation: anim-cloud linear infinite;
+}
+
+@keyframes anim-cloud {
+  from {transform: translateX(100vw)}
+  to {transform: translateX(-100%)}
+}
