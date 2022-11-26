@@ -60,6 +60,8 @@ audio[controls] {
 }
 
 .nest-frame {
-  border-image: url("../public/assets/nest.svg") 12 /  17.28pt / 0 round;
-  border-width: 13pt;
+  border-image: url("../public/assets/nest.svg") 12 round;
+  /* border-image-width: 30px;
+  border-image-outset: 4px;
+  border-width: 22px; */
 }

@@ -11,6 +11,8 @@ const sounds = {
 };
 sounds.menu.volume = 0.5;
 
+const paraIcons = ["🔬", "🗺️", "🕹️", "🧭"];
+
 function App() {
   const [data, setData] = useState({
     title: {},
@@ -95,7 +97,7 @@ function App() {
       </header>
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
-        <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0 bg-gradient-to-t from-sky-500 via-transparent">
+        <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
           <h1
             className="mb-4 text-3xl text-center"
             style={{ textShadow: "1px 1px 3px rgba(0 0 0/.7)" }}
@@ -114,16 +116,19 @@ function App() {
             {data.list.map((m, i) => (
               <button
                 key={i}
-                className="z-0 relative flex justify-center items-end text-center nest-frame w-[16vmin] h-[16vmin] text-lg text-white transition-transform overflow-hidden active:scale-90 leading-none p-2"
+                className="z-0 relative flex justify-center items-end text-center nest-frame w-[16vmin] h-[16vmin] text-white transition-transform overflow-hidden active:scale-90 leading-none p-2"
                 style={{
                   hyphens: "auto",
                   textShadow: "0 0 4px #000, 0 0 10px #000",
+                  borderImageWidth: "22px",
+                  borderImageOutset: "4px",
+                  borderWidth: "14px",
                 }}
                 onClick={e => changePage(i)}
               >
                 <img
                   src={"./data/" + m.img[0]}
-                  className="absolute inset-0 object-cover w-full min-h-full -z-10 brightness-[75%] rounded-lg"
+                  className="absolute inset-0 object-cover w-full min-h-full rounded-lg -z-10"
                   style={{ imageRendering: "crisp-edges" }}
                   alt=""
                 />
@@ -155,79 +160,97 @@ function App() {
             {data.list.map((info, i) => (
               <div
                 key={i}
-                className="relative nest-frame overflow-visible text-sm p-5 flex flex-col leading-tight rounded-xl max-w-[70%] bg-black/50"
+                className="relative nest-frame overflow-hidden text-sm leading-tight rounded-xl max-w-[70%] bg-black/50"
                 style={{
                   boxShadow:
                     "0 0 100px rgba(0 0 0/.5), inset 1px 1px 15px black",
+                  borderImageWidth: "30px",
+                  borderImageOutset: "4px",
+                  borderWidth: "22px",
                 }}
               >
-                <div className="absolute inset-0 overflow-hidden -z-10 rounded-xl">
+                <div className="absolute inset-0 w-full h-full overflow-hidden -z-10 rounded-xl">
                   <img
                     src={"./data/" + info.img[0]}
                     className="object-cover w-full h-full -z-10 blur-2xl saturate-200 brightness-125"
                     alt="bg"
                   />
-                </div>
-                <header className="flex items-start justify-between mb-4 text-3xl leading-none text-center">
-                  <div className="w-[6ch]"></div>
-                  <div style={{ textShadow: "1px 1px 4px rgba(0 0 0/.7)" }}>
-                    {info.h1[lang]}
-                  </div>
-                  <div className="w-[6ch] justify-end flex items-center">
-                    <Button
-                      className="text-sm"
-                      onClick={() => setLang(lang === "z" ? "e" : "z")}
-                    >
-                      {lang === "z" ? "Eng" : "中"}
-                    </Button>
-                  </div>
-                </header>
-
-                {info.dl.map(([h2, text], i) => (
-                  <section
-                    key={i}
-                    className="flex gap-2 p-2 mb-3 border rounded rounded-tl-2xl rounded-br-2xl border-black/50 bg-white/10"
-                    style={{ boxShadow: "1px 1px 3px rgba(0 0 0/.5)" }}
-                  >
-                    <div className="font-bold italic w-[15ch] opacity-60">
-                      {h2[lang]}
-                    </div>
-                    <div className="flex-1">{text[lang]}</div>
-                  </section>
-                ))}
-
-                {info.img.map(src => (
                   <div
-                    key={src}
-                    className={
-                      "grow mt-4 max-h-[40vh] " +
-                      (info.img.length === 1 ? "min-h-[25vh]" : "min-h-[17vh]")
-                    }
-                  >
-                    <img
-                      src={"./data/" + src}
-                      className="object-scale-down h-full min-h-0 mx-auto rounded"
-                      alt=""
-                    />
-                  </div>
-                ))}
-                {info.audio ? (
-                  <div className="flex items-center justify-center gap-2 mt-4">
-                    <div className="p-2 rounded-full bg-white/10">
-                      🎧 {data.hear[lang] || ""} &rarr;
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "repeating-linear-gradient(-60deg, rgba(0 0 0/.15), transparent 2px, transparent 5px)",
+                    }}
+                  ></div>
+                </div>
+
+                <div className="flex flex-col h-full p-5 overflow-auto">
+                  <header className="flex items-start justify-between mb-4 text-3xl leading-none text-center">
+                    <div className="w-[6ch]"></div>
+                    <div style={{ textShadow: "1px 1px 4px rgba(0 0 0/.7)" }}>
+                      {info.h1[lang]}
                     </div>
-                    <audio
-                      ref={n => (mediaRef.current[i] = n)}
-                      src={"./data/" + info.audio}
-                      controls
-                      preload="metadata"
-                      onPlay={onPlay}
-                      onPause={onPause}
-                      controlsList="nodownload nofullscreen"
-                      className="border-4 border-transparent rounded-full shrink-0"
-                    />
-                  </div>
-                ) : null}
+                    <div className="w-[6ch] justify-end flex items-center">
+                      <Button
+                        className="text-sm"
+                        onClick={() => setLang(lang === "z" ? "e" : "z")}
+                      >
+                        {lang === "z" ? "Eng" : "中"}
+                      </Button>
+                    </div>
+                  </header>
+
+                  {info.dl.map(([h2, text], i) => (
+                    <section
+                      key={i}
+                      className="relative flex gap-2 p-2 mb-3 ml-5 border rounded rounded-tl-2xl rounded-br-2xl border-black/50 bg-white/10"
+                      style={{ boxShadow: "1px 1px 3px rgba(0 0 0/.5)" }}
+                    >
+                      <div className="absolute text-4xl -left-3 -top-3">
+                        {paraIcons[i]}
+                      </div>
+                      <div className="font-bold w-[14ch] opacity-60 ml-7">
+                        {h2[lang]}
+                      </div>
+                      <div className="flex-1">{text[lang]}</div>
+                    </section>
+                  ))}
+
+                  {info.img.map(src => (
+                    <div
+                      key={src}
+                      className={
+                        "grow mt-4 max-h-[40vh] " +
+                        (info.img.length === 1
+                          ? "min-h-[25vh]"
+                          : "min-h-[17vh]")
+                      }
+                    >
+                      <img
+                        src={"./data/" + src}
+                        className="object-scale-down h-full min-h-0 mx-auto rounded"
+                        alt=""
+                      />
+                    </div>
+                  ))}
+                  {info.audio ? (
+                    <div className="flex items-center justify-center gap-2 mt-4">
+                      <div className="p-2 rounded-full bg-white/10">
+                        🎧 {data.hear[lang] || ""} &rarr;
+                      </div>
+                      <audio
+                        ref={n => (mediaRef.current[i] = n)}
+                        src={"./data/" + info.audio}
+                        controls
+                        preload="metadata"
+                        onPlay={onPlay}
+                        onPause={onPause}
+                        controlsList="nodownload nofullscreen"
+                        className="border-4 border-transparent rounded-full shrink-0"
+                      />
+                    </div>
+                  ) : null}
+                </div>
               </div>
             ))}
           </Carousel>
