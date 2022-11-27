@@ -12,6 +12,12 @@ const sounds = {
 sounds.menu.volume = 0.5;
 
 const paraIcons = ["🔬", "🗺️", "🕹️", "🧭"];
+const paraColor = [
+  "bg-red-500/40",
+  "bg-yellow-500/40",
+  "bg-sky-500/40",
+  "bg-green-500/40",
+];
 
 function App() {
   const [data, setData] = useState({
@@ -119,30 +125,33 @@ function App() {
 
       <footer className="fixed bottom-0 left-0 w-full h-[15vh]">
         <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-20 -top-20 bottom-20"
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-20 -top-16 bottom-10"
           style={{ backgroundImage: "url('assets/grass.svg')" }}
         ></div>
         <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-50 -top-10"
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-50"
           style={{ backgroundImage: "url('assets/grass.svg')" }}
         ></div>
 
-        <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain"
-          style={{ backgroundImage: "url('assets/grass.svg')" }}
-        ></div>
-
-        <div className="absolute left-0 flex items-end justify-between w-full px-5 bottom-[2vh]">
+        <div className="absolute left-0 flex items-end justify-between w-full px-[5vw] bottom-[5vh]">
           <img src="assets/dog.webp" className="h-[350px]" alt="dog" />
           <img src="assets/cat.webp" className="h-[300px]" alt="cat" />
         </div>
+
+        <div
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain top-16"
+          style={{ backgroundImage: "url('assets/grass.svg')" }}
+        ></div>
       </footer>
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
         <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
           <h1
-            className="mb-4 text-3xl text-center"
-            style={{ textShadow: "1px 1px 3px rgba(0 0 0/.7)" }}
+            className="p-3 px-8 mb-4 text-3xl text-center rounded-md border-[3px] border-[#640]"
+            style={{
+              textShadow: "1px 1px 3px rgba(0 0 0/.7)",
+              background: "#a60 url(assets/wood.svg) center/75% repeat",
+            }}
           >
             <div>{data.title[lang]}</div>
           </h1>
@@ -196,8 +205,8 @@ function App() {
             className="self-stretch grow"
             onBlur={onBlur}
             onFocus={onFocus}
-            prevClassName="active:scale-90 rounded-xl bg-gradient-to-br from-black/70 border"
-            nextClassName="active:scale-90 bg-gradient-to-br from-black/70 rounded-xl border"
+            prevClassName="active:scale-90 rounded-xl bg-gradient-to-br from-black/70 border-2"
+            nextClassName="active:scale-90 bg-gradient-to-br from-black/70 rounded-xl border-2"
           >
             {data.list.map((info, i) => (
               <div
@@ -245,8 +254,13 @@ function App() {
                   {info.dl.map(([h2, text], i) => (
                     <section
                       key={i}
-                      className="relative flex gap-2 p-2 mb-3 ml-5 border rounded rounded-tl-2xl rounded-br-2xl border-black/50 bg-white/10"
-                      style={{ boxShadow: "1px 1px 3px rgba(0 0 0/.5)" }}
+                      className={
+                        "relative flex gap-2 p-2 mb-3 ml-5 border rounded rounded-tl-2xl rounded-br-2xl border-black/50 " +
+                        paraColor[i]
+                      }
+                      style={{
+                        boxShadow: "1px 1px 3px rgba(0 0 0/.5)",
+                      }}
                     >
                       <div className="absolute text-4xl -left-4 -top-2">
                         {paraIcons[i]}
