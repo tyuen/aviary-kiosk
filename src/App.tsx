@@ -119,13 +119,23 @@ function App() {
 
       <footer className="fixed bottom-0 left-0 w-full h-[15vh]">
         <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-50 -top-5"
-          style={{ backgroundImage: "url('./assets/grass.svg')" }}
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-20 -top-20 bottom-20"
+          style={{ backgroundImage: "url('assets/grass.svg')" }}
         ></div>
         <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain"
-          style={{ backgroundImage: "url('./assets/grass.svg')" }}
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-50 -top-10"
+          style={{ backgroundImage: "url('assets/grass.svg')" }}
         ></div>
+
+        <div
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain"
+          style={{ backgroundImage: "url('assets/grass.svg')" }}
+        ></div>
+
+        <div className="absolute left-0 flex items-end justify-between w-full px-5 bottom-[2vh]">
+          <img src="assets/dog.webp" className="h-[350px]" alt="dog" />
+          <img src="assets/cat.webp" className="h-[300px]" alt="cat" />
+        </div>
       </footer>
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
