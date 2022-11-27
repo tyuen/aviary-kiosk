@@ -11,8 +11,14 @@ const sounds = {
 };
 sounds.menu.volume = 0.5;
 
-const paraIcons = ["🔬", "🗺️", "🕹️", "🧭"];
-const paraColor = [
+//const paraIcons = ["🔬", "🗺️", "🕹️", "🧭"];
+const paraIcons = [
+  "./assets/face.svg",
+  "./assets/tree.svg",
+  "./assets/paw.svg",
+  "./assets/map.svg",
+];
+const paraColors = [
   "bg-red-500/40",
   "bg-yellow-500/40",
   "bg-sky-500/40",
@@ -266,14 +272,20 @@ function App() {
                       key={i}
                       className={
                         "relative flex gap-2 p-2 mb-3 ml-5 border rounded rounded-tl-2xl rounded-br-2xl border-black/50 " +
-                        paraColor[i]
+                        paraColors[i]
                       }
                       style={{
                         boxShadow: "1px 1px 3px rgba(0 0 0/.5)",
                       }}
                     >
-                      <div className="absolute text-4xl -left-4 -top-2">
-                        {paraIcons[i]}
+                      <div
+                        className={
+                          "absolute rounded-full -left-4 -top-2 p-2 " +
+                          paraColors[i]
+                        }
+                        style={{ boxShadow: "1px 1px 3px black" }}
+                      >
+                        <img src={paraIcons[i]} className="w-5 h-5" alt="" />
                       </div>
                       <div className="font-bold w-[14ch] opacity-60 ml-7">
                         {h2[lang]}
