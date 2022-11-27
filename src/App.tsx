@@ -124,6 +124,16 @@ function App() {
       </aside>
 
       <footer className="fixed bottom-0 left-0 w-full h-[15vh]">
+        <img
+          src="assets/mountain.svg"
+          className="absolute h-[20vh] left-0 bottom-[20vh] opacity-30"
+          alt="mountain"
+        />
+        <img
+          src="assets/mountain.svg"
+          className="absolute h-[15vh] right-0 bottom-[25vh] opacity-20"
+          alt="mountain"
+        />
         <div
           className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-20 -top-16 bottom-10"
           style={{ backgroundImage: "url('assets/grass.svg')" }}
