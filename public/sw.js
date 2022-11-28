@@ -17,7 +17,11 @@ self.addEventListener("install", e => {
         files.add("./assets/75538__ra-gun.wav");
         files.add("./assets/317273__dpoggioli.wav");
         json.list.forEach(i => {
-          if (i.img) i.img.forEach(s => files.add("./data/" + s));
+          if (i.img)
+            i.img.forEach(s => {
+              files.add("./data/" + s);
+              files.add("./data/thumb/" + s);
+            });
           if (i.audio) files.add("./data/" + i.audio);
         });
         files = Array.from(files.values());

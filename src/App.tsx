@@ -31,6 +31,8 @@ function App() {
     title: {},
     intro: {},
     back: {},
+    next: {},
+    prev: {},
     hear: {},
     list: [],
   });
@@ -60,15 +62,15 @@ function App() {
     const carousel = carouselRef.current;
     if (i === -1) {
       //show main menu
-      pages[0].classList.add(styles.openpage);
-      pages[1].classList.remove(styles.openpage);
+      pages[0].classList.add("open-page");
+      pages[1].classList.remove("open-page");
       //stop all audio
       mediaRef.current.forEach(elm => elm?.pause());
       //play menu sound
       sounds.menu.play()?.catch(e => {});
     } else {
-      pages[0].classList.remove(styles.openpage);
-      pages[1].classList.add(styles.openpage);
+      pages[0].classList.remove("open-page");
+      pages[1].classList.add("open-page");
       if (carousel) carousel.show(i);
     }
   };
@@ -162,7 +164,7 @@ function App() {
       </footer>
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
-        <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
+        <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden duration-500 scale-150 opacity-0 transition-[opacity,_transform]">
           <h1
             className="p-3 px-8 mx-3 mb-4 text-2xl text-center rounded-md border-[3px] border-[#640] leading-none"
             style={{
@@ -186,7 +188,7 @@ function App() {
             {data.list.map((m, i) => (
               <button
                 key={i}
-                className="z-0 relative flex justify-center items-end border border-stone-600 text-center rounded-xl w-[17vmin] h-[16vmin] text-white transition-transform overflow-hidden active:scale-90 leading-none p-2"
+                className="z-0 relative flex justify-center items-end opti-border-dash border-2 border-stone-500 text-center rounded-xl w-[17vmin] h-[16vmin] text-white transition-transform overflow-hidden active:scale-90 leading-none p-2"
                 style={{
                   hyphens: "auto",
                   textShadow: "0 0 4px #000, 0 0 10px #000",
@@ -197,9 +199,10 @@ function App() {
                 onClick={e => changePage(i)}
               >
                 <img
-                  src={"./data/" + m.img[0]}
-                  className="absolute inset-0 object-cover w-full min-h-full rounded-lg -z-10"
+                  src={"./data/thumb/" + m.img[0]}
+                  className="absolute inset-0 object-cover w-full h-full min-h-0 rounded-lg -z-10"
                   style={{ imageRendering: "crisp-edges" }}
+                  loading="lazy"
                   alt=""
                 />
                 {m.h1[lang]}
@@ -220,8 +223,10 @@ function App() {
             className="self-stretch grow"
             onBlur={onBlur}
             onFocus={onFocus}
-            prevClassName="active:scale-90 rounded-xl bg-gradient-to-br from-black/70 border-2"
-            nextClassName="active:scale-90 bg-gradient-to-br from-black/70 rounded-xl border-2"
+            prevClassName="active:scale-90 rounded-xl bg-black/30 border-2"
+            nextClassName="active:scale-90 bg-black/30 rounded-xl border-2"
+            prevLabel={data.prev[lang]}
+            nextLabel={data.next[lang]}
           >
             {data.list.map((info, i) => (
               <div
@@ -240,6 +245,7 @@ function App() {
                   <img
                     src={"./data/" + info.img[0]}
                     className="object-cover w-full h-full -z-10 blur-2xl saturate-200 brightness-125"
+                    loading="lazy"
                     alt="bg"
                   />
                   {/* <div
@@ -322,7 +328,7 @@ function App() {
               </div>
             ))}
           </Carousel>
-          <SwipeIntro className="mb-3 -mt-10" />
+          {/* <SwipeIntro className="mb-3 -mt-10" /> */}
           <Button className="mb-10" onClick={() => changePage(-1)}>
             &larr; {data.back[lang] || ""}
           </Button>

@@ -23,6 +23,8 @@ function Carousel(
     onHide = CB,
     prevClassName = "",
     nextClassName = "",
+    prevLabel = "",
+    nextLabel = "",
   },
   ref,
 ) {
@@ -172,13 +174,20 @@ function Carousel(
 
       <button
         className={
-          "left-2 z-30 sticky min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75 " +
+          "left-2 z-30 sticky flex flex-col h-[14vmin] items-center justify-center top-1/2 -translate-y-1/2 cursor-default active:scale-75 " +
           prevClassName
         }
         onClick={onClickPrev}
       >
-        <div className="absolute rotate-45 translate-y-0.5 border-b-2 border-l-2 translate-x-1/4 border-stone-600 inset-5"></div>
-        <div className="absolute rotate-45 border-b-2 border-l-2 border-white translate-x-1/4 inset-5"></div>
+        <div className="relative min-w-[10vmin] h-[10vmin]">
+          <div className="absolute rotate-45 translate-y-0.5 border-b-2 border-l-2 translate-x-1/4 border-stone-600 inset-5"></div>
+          <div className="absolute rotate-45 border-b-2 border-l-2 border-white translate-x-1/4 inset-5"></div>
+        </div>
+        {prevLabel ? (
+          <div className="text-sm leading-none whitespace-nowrap">
+            {prevLabel}
+          </div>
+        ) : null}
       </button>
 
       <div className="min-w-[50%] text-center opacity-0">&rarr;</div>
@@ -193,13 +202,20 @@ function Carousel(
 
       <button
         className={
-          "right-2 z-30 sticky min-w-[10vmin] h-[10vmin] top-1/2 -translate-y-1/2 cursor-default active:scale-75 " +
+          "right-2 z-30 sticky h-[14vmin] flex flex-col items-center justify-center top-1/2 -translate-y-1/2 cursor-default active:scale-75 " +
           nextClassName
         }
         onClick={onClickNext}
       >
-        <div className="absolute rotate-45 translate-y-0.5 border-t-2 border-r-2 -translate-x-1/4 border-stone-600 inset-5"></div>
-        <div className="absolute rotate-45 border-t-2 border-r-2 border-white -translate-x-1/4 inset-5"></div>
+        <div className="relative min-w-[10vmin] h-[10vmin]">
+          <div className="absolute rotate-45 translate-y-0.5 border-t-2 border-r-2 -translate-x-1/4 border-stone-600 inset-5"></div>
+          <div className="absolute rotate-45 border-t-2 border-r-2 border-white -translate-x-1/4 inset-5"></div>
+        </div>
+        {nextLabel ? (
+          <div className="text-sm leading-none whitespace-nowrap">
+            {nextLabel}
+          </div>
+        ) : null}
       </button>
     </div>
   );
