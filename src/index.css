@@ -100,3 +100,31 @@ audio[controls] {
 .open-page .opti-border-dash {
   border-style: dashed !important;
 }
+
+.anim-focus {
+  animation: anim-focus 1.5s ease-in-out infinite;
+}
+
+@keyframes anim-focus {
+  10% {
+    transform: rotateZ(-10deg) scale(1.2);
+  }
+  20% {
+    transform: rotateZ(15deg) scale(1.2);
+  }
+  30% {
+    transform: rotateZ(-15deg) scale(1.2);
+  }
+  40% {
+    transform: rotateZ(15deg) scale(1.2);
+  }
+  50% {
+    transform: rotateZ(-15deg) scale(1.2);
+  }
+  70% {
+    transform: rotateZ(10deg) scale(1.2);
+  }
+  70% {
+    transform: none;
+  }
+}

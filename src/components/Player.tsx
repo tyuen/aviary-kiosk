@@ -1,16 +1,16 @@
 import { forwardRef, useRef, useCallback, useEffect } from "react";
 
 function prettyTime(s: number) {
-  return [
-    s > 60
+  return (
+    (s > 60
       ? Math.floor(s / 60)
           .toString()
           .padStart(2, "0") + ":"
-      : "00:",
+      : "00:") +
     Math.round(s % 60)
       .toString()
-      .padStart(2, "0"),
-  ].join("");
+      .padStart(2, "0")
+  );
 }
 
 const K = () => {};
@@ -96,7 +96,7 @@ function Playable(
       <nav
         style={{
           padding: 4,
-          background: "rgba(0 0 0/.3)",
+          background: "rgba(0 0 0/.15)",
           borderRadius: 9999,
           display: "inline-block",
           margin: "0 1ch",

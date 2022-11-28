@@ -20,8 +20,8 @@
     "e": "NEXT"
   },
   "hear": {
-    "z": "聽我的叫聲",
-    "e": "Hear Me Call"
+    "z": "播放叫聲",
+    "e": "Play My Call"
   },
   "list": [
     {

@@ -318,8 +318,9 @@ function App() {
                       <Player
                         ref={(n: HTMLAudioElement) => (mediaRef.current[i] = n)}
                         src={"./data/" + info.audio}
-                        className="p-2 px-4 bg-green-800 rounded-full shrink-0"
+                        className="p-2 px-4 bg-green-800 rounded-full shrink-0 active:scale-90"
                       >
+                        <span className="mr-2 text-lg anim-focus">🎧</span>
                         {data.hear[lang] || ""}
                       </Player>
                     </div>
