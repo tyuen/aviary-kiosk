@@ -4,6 +4,7 @@ import styles from "./App.module.css";
 import SwipeIntro from "components/SwipeIntro";
 import Carousel from "components/Carousel";
 import Button from "components/Button";
+import Player from "components/Player";
 
 const sounds = {
   menu: new Audio("./assets/317273__dpoggioli.wav"),
@@ -44,12 +45,12 @@ function App() {
 
   const mediaRef = useRef<HTMLAudioElement[]>([]);
 
-  const onPlay = e => {
-    e.target.classList.add("border-pulse");
-  };
-  const onPause = e => {
-    e.target.classList.remove("border-pulse");
-  };
+  // const onPlay = e => {
+  //   e.target.classList.add("border-pulse");
+  // };
+  // const onPause = e => {
+  //   e.target.classList.remove("border-pulse");
+  // };
 
   const carouselRef = useRef<any>();
   const bookRef = useRef<HTMLElement>();
@@ -111,20 +112,20 @@ function App() {
       <aside className="fixed left-0 w-full top-[8vh]">
         <img
           src="assets/clouds.svg"
-          className="absolute top-0 left-0 h-[15vh] anim-cloud"
-          style={{ animationDuration: "40s" }}
+          className="absolute top-0 left-[5vw] h-[15vh]"
+          style={{ animationDuration: "60s" }}
           alt=""
         />
         <img
           src="assets/clouds.svg"
-          className="absolute top-0 left-0 h-[10vh] anim-cloud"
-          style={{ animationDuration: "50s", animationDelay: "10s" }}
+          className="absolute top-[5vw] left-[50vw] h-[10vh]"
+          style={{ animationDuration: "70s", animationDelay: "10s" }}
           alt=""
         />
         <img
           src="assets/clouds.svg"
-          className="absolute top-0 left-0 h-[5vh] anim-cloud"
-          style={{ animationDuration: "60s", animationDelay: "5s" }}
+          className="absolute top-[5vw] right-[5vw] h-[5vh]"
+          style={{ animationDuration: "80s", animationDelay: "5s" }}
           alt=""
         />
       </aside>
@@ -141,17 +142,17 @@ function App() {
           alt="mountain"
         />
         <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-20 -top-16 bottom-10"
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-20 -top-10 bottom-10"
           style={{ backgroundImage: "url('assets/grass.svg')" }}
         ></div>
         <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-50"
+          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-50 top-5"
           style={{ backgroundImage: "url('assets/grass.svg')" }}
         ></div>
 
         <div className="absolute left-0 flex items-end justify-between w-full px-[5vw] bottom-[5vh]">
-          <img src="assets/dog.webp" className="h-[350px]" alt="dog" />
-          <img src="assets/cat.webp" className="h-[300px]" alt="cat" />
+          <img src="assets/dog.webp" className="h-[150px]" alt="dog" />
+          <img src="assets/cat.webp" className="h-[100px]" alt="cat" />
         </div>
 
         <div
@@ -163,19 +164,21 @@ function App() {
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
         <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 scale-150 opacity-0">
           <h1
-            className="p-3 px-8 mb-4 text-3xl text-center rounded-md border-[3px] border-[#640]"
+            className="p-3 px-8 mx-3 mb-4 text-2xl text-center rounded-md border-[3px] border-[#640] leading-none"
             style={{
-              textShadow: "1px 1px 3px rgba(0 0 0/.7)",
+              // textShadow: "1px 1px 3px rgba(0 0 0/.7)",
               background: "#a60 url(assets/wood.svg) center/75% repeat",
             }}
           >
-            <div>{data.title[lang]}</div>
+            <div>{data.title[lang] || "Loading..."}</div>
           </h1>
 
-          <div
-            className="mb-6 justify-evenly mx-[13vw] text-justify"
-            style={{ textShadow: "1px 1px 3px rgba(0 0 0/.7)" }}
-          >
+          <div className="mb-6 mx-[13vw] text-justify leading-tight">
+            <img
+              src="assets/dog.webp"
+              className="h-[95px] float-left mr-6 mb-1"
+              alt="dog"
+            />
             {data.intro[lang]}
           </div>
 
@@ -183,13 +186,13 @@ function App() {
             {data.list.map((m, i) => (
               <button
                 key={i}
-                className="z-0 relative flex justify-center items-end text-center nest-frame w-[16vmin] h-[16vmin] text-white transition-transform overflow-hidden active:scale-90 leading-none p-2"
+                className="z-0 relative flex justify-center items-end border border-stone-600 text-center rounded-xl w-[17vmin] h-[16vmin] text-white transition-transform overflow-hidden active:scale-90 leading-none p-2"
                 style={{
                   hyphens: "auto",
                   textShadow: "0 0 4px #000, 0 0 10px #000",
-                  borderImageWidth: "22px",
-                  borderImageOutset: "4px",
-                  borderWidth: "14px",
+                  // borderImageWidth: "12px",
+                  // borderImageOutset: "4px",
+                  // borderWidth: "4px" ? 2 : 2,
                 }}
                 onClick={e => changePage(i)}
               >
@@ -205,12 +208,8 @@ function App() {
           </nav>
           {data.list.length > 0 ? (
             <div className="flex justify-center gap-2 mt-6 text-sm">
-              <Button className="bg-black/60" onClick={() => setLang("z")}>
-                中文
-              </Button>
-              <Button className="bg-black/60" onClick={() => setLang("e")}>
-                Eng
-              </Button>
+              <Button onClick={() => setLang("z")}>中文</Button>
+              <Button onClick={() => setLang("e")}>Eng</Button>
             </div>
           ) : null}
         </article>
@@ -230,10 +229,11 @@ function App() {
                 className="relative nest-frame overflow-hidden text-sm leading-tight rounded-xl max-w-[70%] bg-black/50"
                 style={{
                   boxShadow:
-                    "0 0 100px rgba(0 0 0/.5), inset 1px 1px 15px black",
-                  borderImageWidth: "30px",
+                    // "0 0 100px rgba(0 0 0/.5), inset 1px 1px 15px black",
+                    "inset 1px 1px 15px black",
+                  borderImageWidth: "18px",
                   borderImageOutset: "4px",
-                  borderWidth: "22px",
+                  borderWidth: "10px",
                 }}
               >
                 <div className="absolute inset-0 w-full h-full overflow-hidden -z-10 rounded-xl">
@@ -242,13 +242,13 @@ function App() {
                     className="object-cover w-full h-full -z-10 blur-2xl saturate-200 brightness-125"
                     alt="bg"
                   />
-                  <div
+                  {/* <div
                     className="absolute inset-0"
                     style={{
                       background:
                         "repeating-linear-gradient(-60deg, rgba(0 0 0/.15), transparent 2px, transparent 5px)",
                     }}
-                  ></div>
+                  ></div> */}
                 </div>
 
                 <div className="flex flex-col h-full p-5 overflow-auto">
@@ -271,19 +271,15 @@ function App() {
                     <section
                       key={i}
                       className={
-                        "relative flex gap-2 p-2 mb-3 ml-5 border rounded rounded-tl-2xl rounded-br-2xl border-black/50 " +
+                        "relative flex gap-2 p-2 mb-3 ml-5 border rounded rounded-bl-2xl rounded-tr-2xl border-black/50 " +
                         paraColors[i]
                       }
-                      style={{
-                        boxShadow: "1px 1px 3px rgba(0 0 0/.5)",
-                      }}
                     >
                       <div
                         className={
-                          "absolute rounded-full -left-4 -top-2 p-2 " +
+                          "absolute rounded-full -left-4 -top-2 p-2 border border-black/50 " +
                           paraColors[i]
                         }
-                        style={{ boxShadow: "1px 1px 3px black" }}
                       >
                         <img src={paraIcons[i]} className="w-5 h-5" alt="" />
                       </div>
@@ -298,10 +294,10 @@ function App() {
                     <div
                       key={src}
                       className={
-                        "grow mt-4 max-h-[40vh] " +
+                        "grow mt-4 " +
                         (info.img.length === 1
-                          ? "min-h-[25vh]"
-                          : "min-h-[17vh]")
+                          ? "min-h-[25vh] max-h-[40vh]"
+                          : "min-h-[15vh] max-h-[20vh]")
                       }
                     >
                       <img
@@ -312,20 +308,14 @@ function App() {
                     </div>
                   ))}
                   {info.audio ? (
-                    <div className="flex items-center justify-center gap-2 mt-4">
-                      <div className="p-2 rounded-full bg-white/10">
-                        🎧 {data.hear[lang] || ""} &rarr;
-                      </div>
-                      <audio
-                        ref={n => (mediaRef.current[i] = n)}
+                    <div className="flex items-center justify-center gap-2 mt-4 whitespace-nowrap">
+                      <Player
+                        ref={(n: HTMLAudioElement) => (mediaRef.current[i] = n)}
                         src={"./data/" + info.audio}
-                        controls
-                        preload="metadata"
-                        onPlay={onPlay}
-                        onPause={onPause}
-                        controlsList="nodownload nofullscreen"
-                        className="border-4 border-transparent rounded-full shrink-0"
-                      />
+                        className="p-2 px-4 bg-green-800 rounded-full shrink-0"
+                      >
+                        {data.hear[lang] || ""}
+                      </Player>
                     </div>
                   ) : null}
                 </div>
@@ -333,7 +323,7 @@ function App() {
             ))}
           </Carousel>
           <SwipeIntro className="mb-3 -mt-10" />
-          <Button className="mb-20 bg-black/60" onClick={() => changePage(-1)}>
+          <Button className="mb-10" onClick={() => changePage(-1)}>
             &larr; {data.back[lang] || ""}
           </Button>
         </article>
