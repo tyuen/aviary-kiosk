@@ -20,10 +20,10 @@ const paraIcons = [
   "./assets/map.svg",
 ];
 const paraColors = [
-  "bg-red-500/40",
-  "bg-yellow-500/40",
-  "bg-sky-500/40",
-  "bg-green-500/40",
+  "bg-red-500",
+  "bg-yellow-600",
+  "bg-sky-500",
+  "bg-green-500",
 ];
 
 function App() {
@@ -144,22 +144,24 @@ function App() {
           alt="mountain"
         />
         <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-20 -top-10 bottom-10"
-          style={{ backgroundImage: "url('assets/grass.svg')" }}
+          className="absolute inset-0 opacity-50 -top-20 bottom-20"
+          style={{ background: "url('assets/shrub.svg') bottom/40% repeat-x" }}
         ></div>
         <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain opacity-50 top-5"
-          style={{ backgroundImage: "url('assets/grass.svg')" }}
+          className="absolute inset-0 opacity-70 -top-10 bottom-10"
+          style={{ background: "url('assets/shrub.svg') bottom/50% repeat-x" }}
         ></div>
 
-        <div className="absolute left-0 flex items-end justify-between w-full px-[5vw] bottom-[5vh]">
+        <div className="absolute left-0 flex items-end justify-between w-full px-[5vw] bottom-[4vh]">
           <img src="assets/dog.webp" className="h-[150px]" alt="dog" />
           <img src="assets/cat.webp" className="h-[100px]" alt="cat" />
         </div>
 
         <div
-          className="absolute inset-0 bg-bottom bg-repeat-x bg-contain top-16"
-          style={{ backgroundImage: "url('assets/grass.svg')" }}
+          className="absolute inset-0"
+          style={{
+            background: "url('assets/shrub.svg') bottom/60% repeat-x",
+          }}
         ></div>
       </footer>
 
@@ -276,9 +278,7 @@ function App() {
                       >
                         <img src={paraIcons[i]} className="w-5 h-5" alt="" />
                       </div>
-                      <div className="font-bold w-[14ch] opacity-60 ml-7">
-                        {h2[lang]}
-                      </div>
+                      <div className="font-bold w-[14ch] ml-7">{h2[lang]}</div>
                       <div className="flex-1">{text[lang]}</div>
                     </section>
                   ))}
@@ -305,7 +305,7 @@ function App() {
                       <Player
                         ref={(n: HTMLAudioElement) => (mediaRef.current[i] = n)}
                         src={"./data/" + info.audio}
-                        className="p-2 px-4 bg-green-800 rounded-full shrink-0 active:scale-95"
+                        className="p-2 px-4 bg-green-600 rounded-full shrink-0 active:scale-95"
                       >
                         {data.hear[lang] || ""}
                         <span className="ml-2 text-lg anim-focus">👉</span>
