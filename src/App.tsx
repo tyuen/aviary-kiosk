@@ -99,7 +99,7 @@ function App() {
   return (
     <div className="flex flex-col items-stretch h-full overflow-hidden text-white">
       <header
-        className="flex items-center justify-center gap-6 pt-1 bg-white rounded-b-[50%_30%] pb-[10px]"
+        className="flex items-center justify-center gap-6 pt-1 bg-white rounded-b-[50%_50%] pb-[5px]"
         style={{ boxShadow: "0 1px 10px rgba(0 0 0/.4)" }}
       >
         <img
@@ -108,7 +108,7 @@ function App() {
           alt=""
           onClick={() => changePage(-1)}
         />
-        <img src="assets/hksar25.png" className="my-3 mr-2 h-14" alt="" />
+        {/* <img src="assets/hksar25.png" className="my-3 mr-2 h-14" alt="" /> */}
       </header>
 
       <aside className="fixed left-0 w-full top-[8vh]">
@@ -168,7 +168,6 @@ function App() {
           <h1
             className="p-3 px-8 mx-3 mb-4 text-2xl text-center rounded-md border-[3px] border-[#640] leading-none"
             style={{
-              // textShadow: "1px 1px 3px rgba(0 0 0/.7)",
               background: "#a60 url(assets/wood.svg) center/75% repeat",
             }}
           >
@@ -188,13 +187,10 @@ function App() {
             {data.list.map((m, i) => (
               <button
                 key={i}
-                className="z-0 relative flex justify-center items-end opti-border-dash border-2 border-stone-500 text-center rounded-xl w-[17vmin] h-[16vmin] text-white transition-transform overflow-hidden active:scale-90 leading-none p-2"
+                className="z-0 relative flex justify-center items-end opti-border-dash border-2 border-stone-500 text-center rounded-xl w-[17vmin] h-[16vmin] text-white transition-transform overflow-hidden active:scale-95 leading-none p-2"
                 style={{
                   hyphens: "auto",
-                  textShadow: "0 0 4px #000, 0 0 10px #000",
-                  // borderImageWidth: "12px",
-                  // borderImageOutset: "4px",
-                  // borderWidth: "4px" ? 2 : 2,
+                  // textShadow: "0 0 4px #000, 0 0 10px #000",
                 }}
                 onClick={e => changePage(i)}
               >
@@ -223,8 +219,8 @@ function App() {
             className="self-stretch grow"
             onBlur={onBlur}
             onFocus={onFocus}
-            prevClassName="active:scale-90 rounded-xl bg-black/30 border-2"
-            nextClassName="active:scale-90 bg-black/30 rounded-xl border-2"
+            prevClassName="active:scale-95 rounded-xl bg-black/30 border-2"
+            nextClassName="active:scale-95 bg-black/30 rounded-xl border-2"
             prevLabel={data.prev[lang]}
             nextLabel={data.next[lang]}
           >
@@ -248,21 +244,12 @@ function App() {
                     loading="lazy"
                     alt="bg"
                   />
-                  {/* <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "repeating-linear-gradient(-60deg, rgba(0 0 0/.15), transparent 2px, transparent 5px)",
-                    }}
-                  ></div> */}
                 </div>
 
                 <div className="flex flex-col h-full p-5 overflow-auto">
                   <header className="flex items-start justify-between mb-4 text-3xl leading-none text-center">
                     <div className="w-[6ch]"></div>
-                    <div style={{ textShadow: "1px 1px 4px rgba(0 0 0/.7)" }}>
-                      {info.h1[lang]}
-                    </div>
+                    <div>{info.h1[lang]}</div>
                     <div className="w-[6ch] justify-end flex items-center">
                       <Button
                         className="text-sm"
@@ -318,7 +305,7 @@ function App() {
                       <Player
                         ref={(n: HTMLAudioElement) => (mediaRef.current[i] = n)}
                         src={"./data/" + info.audio}
-                        className="p-2 px-4 bg-green-800 rounded-full shrink-0 active:scale-90"
+                        className="p-2 px-4 bg-green-800 rounded-full shrink-0 active:scale-95"
                       >
                         <span className="mr-2 text-lg anim-focus">🎧</span>
                         {data.hear[lang] || ""}

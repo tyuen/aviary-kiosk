@@ -99,32 +99,33 @@ audio[controls] {
 
 .open-page .opti-border-dash {
   border-style: dashed !important;
+  text-shadow: 0 0 4px #000, 0 0 10px #000;
 }
 
 .anim-focus {
-  animation: anim-focus 1.5s ease-in-out infinite;
+  animation: anim-focus 2.6s linear infinite;
 }
 
 @keyframes anim-focus {
-  10% {
+  5% {
     transform: rotateZ(-10deg) scale(1.2);
+  }
+  10% {
+    transform: rotateZ(15deg) scale(1.2);
+  }
+  15% {
+    transform: rotateZ(-15deg) scale(1.2);
   }
   20% {
     transform: rotateZ(15deg) scale(1.2);
   }
+  25% {
+    transform: rotateZ(-15deg) scale(1.2);
+  }
   30% {
-    transform: rotateZ(-15deg) scale(1.2);
-  }
-  40% {
-    transform: rotateZ(15deg) scale(1.2);
-  }
-  50% {
-    transform: rotateZ(-15deg) scale(1.2);
-  }
-  70% {
     transform: rotateZ(10deg) scale(1.2);
   }
-  70% {
+  35% {
     transform: none;
   }
 }
