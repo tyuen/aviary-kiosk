@@ -33,3 +33,25 @@ if (process.env.NODE_ENV !== "development") {
     });
   }
 }
+
+// (n => {
+//   var toggle = show => {
+//     if (show) {
+//       n.classList.add("show");
+//       n.style.display = "block";
+//     } else {
+//       n.classList.remove("show");
+//       setTimeout(() => (n.style.display = "none"), 600);
+//     }
+//   };
+//   var timer = setTimeout(() => toggle(true), 60000);
+//   document.body.addEventListener(
+//     "click",
+//     e => {
+//       toggle(false);
+//       clearTimeout(timer);
+//       timer = setTimeout(() => toggle(true), 60000);
+//     },
+//     false,
+//   );
+// })(document.getElementById("saver"));

@@ -1,51 +1,54 @@
 <?xml version="1.0" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30" stroke-opacity="0.5">
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(-2, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="30;0" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(-6, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="-15;-30" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(0, 0)" fill="none" stroke="#003" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="40;10" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(-3, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="0;-15" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(2, 0)" fill="none" stroke="#004" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="50;20" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(0, 0)" fill="none" stroke="#66c" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="15;0" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(4, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="60;30" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(3, 0)" fill="none" stroke="#66c" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="45;30" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(6, 0)" fill="none" stroke="#006" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="40;10" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(6, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="75;60" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(8, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="50;20" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(9, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="105;90" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(10, 0)" fill="none" stroke="#004" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="30;0" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(12, 0)" fill="none" stroke="#66c" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="135;120" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(12, 0)" fill="none" stroke="#003" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="40;10" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(15, 0)" fill="none" stroke="#66c" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="165;150" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(14, 0)" fill="none" stroke="#004" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="50;20" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(18, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="195;180" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(16, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="30;0" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(21, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="225;210" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(18, 0)" fill="none" stroke="#006" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="40;10" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(24, 0)" fill="none" stroke="#66c" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="255;240" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(20, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="50;20" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(27, 0)" fill="none" stroke="#66c" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="270;255" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(22, 0)" fill="none" stroke="#004" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="30;0" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
-</path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(24, 0)" fill="none" stroke="#003" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="40;10" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
-</path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(26, 0)" fill="none" stroke="#003" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="50;20" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
-</path>
-<path stroke-dasharray="10%,40%" d="M0 0L2 30" transform="translate(28, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
-  <animate values="30;0" dur="1.2s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
+
+<path stroke-dasharray="10%,40%" d="M0 0L3 30" transform="translate(30, 0)" fill="none" stroke="#005" stroke-width="1" stroke-linecap="round" stroke-linejoin="bevel">
+  <animate values="285;270" dur="0.1s" calcMode="linear" attributeName="stroke-dashoffset" repeatCount="indefinite" />
 </path>
 </svg>
