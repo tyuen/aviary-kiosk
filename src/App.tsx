@@ -168,12 +168,20 @@ function App() {
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
         <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden duration-500 scale-150 opacity-0 transition-[opacity,_transform]">
           <h1
-            className="p-3 px-8 mx-3 mb-4 text-2xl text-center rounded-md border-[3px] border-[#640] leading-none"
+            className="p-2 px-5 mx-3 mb-4 text-4xl border-2 border-[#640] leading-none text-center rounded-md"
             style={{
               background: "#a60 url(assets/wood.svg) center/75% repeat",
             }}
           >
-            <div>{data.title[lang] || "Loading..."}</div>
+            <div
+              style={{
+                background: "linear-gradient(#f66, #ff6, #6f6, #88f)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              {data.title[lang] || "Loading..."}
+            </div>
           </h1>
 
           <div className="mb-6 mx-[13vw] text-justify leading-tight">
@@ -278,7 +286,7 @@ function App() {
                       >
                         <img src={paraIcons[i]} className="w-5 h-5" alt="" />
                       </div>
-                      <div className="font-bold w-[14ch] ml-7">{h2[lang]}</div>
+                      <div className="w-[14ch] ml-7">{h2[lang]}</div>
                       <div className="flex-1">{text[lang]}</div>
                     </section>
                   ))}
