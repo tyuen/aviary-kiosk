@@ -175,7 +175,7 @@ function App() {
           >
             <div
               style={{
-                background: "linear-gradient(#f66, #ff6, #6f6, #88f)",
+                background: "linear-gradient(65deg, #f66, #ff6, #6f6, #88f)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
