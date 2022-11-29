@@ -104,26 +104,36 @@ audio[controls] {
 
 .anim-focus {
   animation: anim-focus 2.6s linear infinite;
+  transform-origin: left;
 }
 
+/* @keyframes anim-focus {
+  5% { transform: rotateZ(-10deg) scale(1.2) }
+  10% { transform: rotateZ(15deg) scale(1.2) }
+  15% { transform: rotateZ(-15deg) scale(1.2) }
+  20% { transform: rotateZ(15deg) scale(1.2) }
+  25% { transform: rotateZ(-15deg) scale(1.2) }
+  30% { transform: rotateZ(10deg) scale(1.2) }
+  35% { transform: none }
+} */
 @keyframes anim-focus {
   5% {
-    transform: rotateZ(-10deg) scale(1.2);
+    transform: translate(-5px) scale(1.2);
   }
   10% {
-    transform: rotateZ(15deg) scale(1.2);
+    transform: translate(5px) scale(1.2);
   }
   15% {
-    transform: rotateZ(-15deg) scale(1.2);
+    transform: translate(-5px) scale(1.2);
   }
   20% {
-    transform: rotateZ(15deg) scale(1.2);
+    transform: translate(5px) scale(1.2);
   }
   25% {
-    transform: rotateZ(-15deg) scale(1.2);
+    transform: translate(-5px) scale(1.2);
   }
   30% {
-    transform: rotateZ(10deg) scale(1.2);
+    transform: translate(5deg) scale(1.2);
   }
   35% {
     transform: none;

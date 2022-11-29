@@ -307,8 +307,8 @@ function App() {
                         src={"./data/" + info.audio}
                         className="p-2 px-4 bg-green-800 rounded-full shrink-0 active:scale-95"
                       >
-                        <span className="mr-2 text-lg anim-focus">🎧</span>
                         {data.hear[lang] || ""}
+                        <span className="ml-2 text-lg anim-focus">👉</span>
                       </Player>
                     </div>
                   ) : null}
