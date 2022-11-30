@@ -12,9 +12,8 @@ const sounds = {
 };
 sounds.menu.volume = 0.5;
 
-//const paraIcons = ["🔬", "🗺️", "🕹️", "🧭"];
 const paraIcons = [
-  "./assets/face.svg",
+  "./assets/crow.svg",
   "./assets/tree.svg",
   "./assets/paw.svg",
   "./assets/map.svg",
@@ -130,6 +129,10 @@ function App() {
           style={{ animationDuration: "80s", animationDelay: "5s" }}
           alt=""
         />
+
+        <h1 className="absolute left-0 flex justify-center w-full top-[20px]">
+          <img src="assets/title.svg" className="h-[100px]" alt="title" />
+        </h1>
       </aside>
 
       <footer className="fixed bottom-0 left-0 w-full h-[15vh]">
@@ -167,7 +170,7 @@ function App() {
 
       <article ref={bookRef} className="relative z-0 flex-1 overflow-hidden">
         <article className="absolute inset-0 flex flex-col items-center justify-center w-full h-full p-0 m-0 overflow-hidden duration-500 scale-150 opacity-0 transition-[opacity,_transform]">
-          <h1
+          {/* <h1
             className="p-2 px-5 mx-3 mb-4 text-4xl border-2 border-[#640] leading-none text-center rounded-md"
             style={{
               background: "#a60 url(assets/wood.svg) center/75% repeat",
@@ -182,9 +185,9 @@ function App() {
             >
               {data.title[lang] || "Loading..."}
             </div>
-          </h1>
+          </h1> */}
 
-          <div className="mb-6 mx-[13vw] text-justify leading-tight">
+          <div className="mb-6 mx-[13vw] text-justify leading-tight mt-[120px]">
             <img
               src="assets/dog.webp"
               className="h-[95px] float-left mr-6 mb-1"
@@ -260,7 +263,7 @@ function App() {
                   <header className="flex items-start justify-between mb-4 text-3xl leading-none text-center">
                     <div className="w-[6ch]"></div>
                     <div>{info.h1[lang]}</div>
-                    <div className="w-[6ch] justify-end flex items-center">
+                    <div className="w-[5ch] justify-end flex items-center">
                       <Button
                         className="text-sm"
                         onClick={() => setLang(lang === "z" ? "e" : "z")}

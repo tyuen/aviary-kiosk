@@ -103,7 +103,7 @@ audio[controls] {
 }
 
 .anim-focus {
-  animation: anim-focus 2.6s linear infinite;
+  animation: anim-focus 2.6s 5s linear infinite;
   transform-origin: left;
 }
 
