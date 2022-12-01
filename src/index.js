@@ -34,24 +34,29 @@ if (process.env.NODE_ENV !== "development") {
   }
 }
 
-// (n => {
-//   var toggle = show => {
-//     if (show) {
-//       n.classList.add("show");
-//       n.style.display = "block";
-//     } else {
-//       n.classList.remove("show");
-//       setTimeout(() => (n.style.display = "none"), 600);
-//     }
-//   };
-//   var timer = setTimeout(() => toggle(true), 60000);
-//   document.body.addEventListener(
-//     "click",
-//     e => {
-//       toggle(false);
-//       clearTimeout(timer);
-//       timer = setTimeout(() => toggle(true), 60000);
-//     },
-//     false,
-//   );
-// })(document.getElementById("saver"));
+(n => {
+  var rand;
+  var tick = () => {
+    n.style.top = Math.round(Math.random() * 95) + "vh";
+    rand = setTimeout(tick, 10000);
+  };
+  var toggle = show => {
+    if (show) {
+      tick();
+      n.style.display = "block";
+    } else {
+      n.style.display = "none";
+      clearTimeout(rand);
+    }
+  };
+  var timer = setTimeout(() => toggle(true), 60000);
+  document.body.addEventListener(
+    "click",
+    e => {
+      toggle(false);
+      clearTimeout(timer);
+      timer = setTimeout(() => toggle(true), 60000);
+    },
+    false,
+  );
+})(document.getElementById("saver"));
