@@ -129,10 +129,6 @@ function App() {
           style={{ animationDuration: "80s", animationDelay: "5s" }}
           alt=""
         />
-
-        <h1 className="absolute left-0 flex justify-center w-full top-[20px]">
-          <img src="assets/title.svg" className="h-[100px]" alt="title" />
-        </h1>
       </aside>
 
       <footer className="fixed bottom-0 left-0 w-full h-[15vh]">
@@ -186,13 +182,15 @@ function App() {
               {data.title[lang] || "Loading..."}
             </div>
           </h1> */}
+          <img src="assets/title.svg" className="h-[100px]" alt="title" />
 
-          <div className="mb-6 mx-[13vw] text-justify leading-tight mt-[120px]">
-            <img
-              src="assets/dog.webp"
-              className="h-[95px] float-left mr-6 mb-1"
-              alt="dog"
-            />
+          <div
+            className={
+              "flex gap-4 mb-6 mx-[13vw] text-justify leading-tight mt-4 " +
+              (lang === "z" ? "text-base" : "text-sm")
+            }
+          >
+            <img src="assets/dog.webp" className="h-[95px]" alt="dog" />
             {data.intro[lang]}
           </div>
 
@@ -289,8 +287,12 @@ function App() {
                       >
                         <img src={paraIcons[i]} className="w-5 h-5" alt="" />
                       </div>
-                      <div className="w-[14ch] ml-7">{h2[lang]}</div>
-                      <div className="flex-1">{text[lang]}</div>
+                      <div className="flex-1 ml-7">
+                        <div className="opacity-80">{h2[lang]}</div>
+                        <div className="text-lg leading-tight">
+                          {text[lang]}
+                        </div>
+                      </div>
                     </section>
                   ))}
 
@@ -328,9 +330,14 @@ function App() {
             ))}
           </Carousel>
           {/* <SwipeIntro className="mb-3 -mt-10" /> */}
-          <Button className="mb-10" onClick={() => changePage(-1)}>
-            &larr; {data.back[lang] || ""}
-          </Button>
+          <div className="flex items-center justify-center gap-2 mt-6 mb-10 text-sm">
+            <Button onClick={() => changePage(-1)}>
+              &larr; {data.back[lang] || ""}
+            </Button>
+            <Button onClick={() => setLang(lang === "z" ? "e" : "z")}>
+              {lang === "z" ? "Eng" : "中"}
+            </Button>
+          </div>
         </article>
       </article>
     </div>
