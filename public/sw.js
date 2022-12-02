@@ -16,6 +16,7 @@ self.addEventListener("install", e => {
         files.add("./assets/JustFontFenYuanZiTi.ttf");
         files.add("./assets/75538__ra-gun.wav");
         files.add("./assets/317273__dpoggioli.wav");
+        files.add("./assets/fly_bird.svg");
         json.list.forEach(i => {
           if (i.img)
             i.img.forEach(s => {

@@ -151,10 +151,10 @@ function App() {
           style={{ background: "url('assets/shrub.svg') bottom/50% repeat-x" }}
         ></div>
 
-        <div className="absolute left-0 flex items-end justify-between w-full px-[5vw] bottom-[4vh]">
+        {/* <div className="absolute left-0 flex items-end justify-between w-full px-[5vw] bottom-[4vh]">
           <img src="assets/dog.webp" className="h-[150px]" alt="dog" />
           <img src="assets/cat.webp" className="h-[100px]" alt="cat" />
-        </div>
+        </div> */}
 
         <div
           className="absolute inset-0"
@@ -186,12 +186,13 @@ function App() {
 
           <div
             className={
-              "flex gap-4 mb-6 mx-[13vw] text-justify leading-tight mt-4 " +
+              "flex gap-2 mb-6 mx-[13vw] text-justify leading-tight mt-4 " +
               (lang === "z" ? "text-base" : "text-sm")
             }
           >
             <img src="assets/dog.webp" className="h-[95px]" alt="dog" />
             {data.intro[lang]}
+            <img src="assets/cat.webp" className="h-[90px]" alt="dog" />
           </div>
 
           <nav className="grid grid-cols-4 gap-[3vmin]">
@@ -289,7 +290,11 @@ function App() {
                       </div>
                       <div className="flex-1 ml-7">
                         <div className="opacity-80">{h2[lang]}</div>
-                        <div className="text-lg leading-tight">
+                        <div
+                          className={
+                            "leading-tight " + (lang === "z" ? "text-lg" : "")
+                          }
+                        >
                           {text[lang]}
                         </div>
                       </div>

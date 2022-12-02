@@ -36,6 +36,9 @@ function Carousel(
   const stubsRef = useRef<HTMLDivElement[]>([]);
   //currently visible box
   const activeStubRef = useRef<HTMLDivElement>();
+  //arrow buttons
+  const prevBtnRef = useRef<HTMLButtonElement>();
+  const nextBtnRef = useRef<HTMLButtonElement>();
 
   useImperativeHandle(
     ref,
@@ -91,7 +94,11 @@ function Carousel(
               const last = activeStubRef.current;
               if (last !== stub) {
                 onBlur(stubs.indexOf(last));
-                onFocus(stubs.indexOf(stub));
+                const cur = stubs.indexOf(stub);
+                prevBtnRef.current.style.opacity = cur > 0 ? "1" : "0";
+                nextBtnRef.current.style.opacity =
+                  cur + 1 < stubs.length ? "1" : "0";
+                onFocus(cur);
                 activeStubRef.current = stub;
               }
             }
@@ -173,8 +180,9 @@ function Carousel(
       </ol>
 
       <button
+        ref={prevBtnRef}
         className={
-          "left-2 z-30 sticky flex flex-col h-[14vmin] items-center justify-center top-1/2 -translate-y-1/2 cursor-default active:scale-75 " +
+          "left-2 z-30 sticky flex flex-col h-[14vmin] items-center justify-center top-1/2 -translate-y-1/2 cursor-default active:scale-95 transition-opacity " +
           prevClassName
         }
         onClick={onClickPrev}
@@ -201,8 +209,9 @@ function Carousel(
       <div className="min-w-[50%] text-center opacity-0">&rarr;</div>
 
       <button
+        ref={nextBtnRef}
         className={
-          "right-2 z-30 sticky h-[14vmin] flex flex-col items-center justify-center top-1/2 -translate-y-1/2 cursor-default active:scale-75 " +
+          "right-2 z-30 sticky h-[14vmin] flex flex-col items-center justify-center top-1/2 -translate-y-1/2 cursor-default active:scale-95 transition-opacity " +
           nextClassName
         }
         onClick={onClickNext}

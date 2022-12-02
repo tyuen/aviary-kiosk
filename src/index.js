@@ -35,10 +35,11 @@ if (process.env.NODE_ENV !== "development") {
 }
 
 (n => {
-  var rand;
+  var ticker;
   var tick = () => {
     n.style.top = Math.round(Math.random() * 95) + "vh";
-    rand = setTimeout(tick, 10000);
+    clearTimeout(ticker);
+    ticker = setTimeout(tick, 10000);
   };
   var toggle = show => {
     if (show) {
@@ -46,7 +47,7 @@ if (process.env.NODE_ENV !== "development") {
       n.style.display = "block";
     } else {
       n.style.display = "none";
-      clearTimeout(rand);
+      clearTimeout(ticker);
     }
   };
   var timer = setTimeout(() => toggle(true), 60000);
