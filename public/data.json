@@ -20,8 +20,12 @@
     "e": "NEXT"
   },
   "hear": {
-    "z": "播放叫聲",
-    "e": "Play My Call"
+    "z": "播放鳥鳴",
+    "e": "Play Bird Chirping Sounds"
+  },
+  "lang": {
+    "z": "繁",
+    "e": "Eng"
   },
   "list": [
     {

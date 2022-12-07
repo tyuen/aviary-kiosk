@@ -33,6 +33,7 @@ function App() {
     next: {},
     prev: {},
     hear: {},
+    lang: {},
     list: [],
   });
   const [lang, setLang] = useState("z");
@@ -78,6 +79,10 @@ function App() {
     if (bookRef.current) changePage(-1);
   }, [bookRef]);
 
+  useEffect(() => {
+    sounds.menu.play()?.catch(e => {});
+  }, [lang]);
+
   const onBlur = i => {
     if (i >= 0) {
       let m = mediaRef.current[i];
@@ -97,7 +102,7 @@ function App() {
 
   return (
     <div className="flex flex-col items-stretch h-full overflow-hidden text-white">
-      <header
+      {/* <header
         className="flex items-center justify-center gap-6 pt-1 bg-white rounded-b-[50%_50%] pb-[5px]"
         style={{ boxShadow: "0 1px 10px rgba(0 0 0/.4)" }}
       >
@@ -107,19 +112,19 @@ function App() {
           alt=""
           onClick={() => changePage(-1)}
         />
-        {/* <img src="assets/hksar25.png" className="my-3 mr-2 h-14" alt="" /> */}
-      </header>
+        <img src="assets/hksar25.png" className="hidden my-3 mr-2 h-14" alt="" />
+      </header> */}
 
-      <aside className="fixed left-0 w-full top-[8vh]">
+      <aside className="fixed left-0 w-full top-[5vh]">
         <img
           src="assets/clouds.svg"
-          className="absolute top-0 left-[5vw] h-[15vh]"
+          className="absolute top-[3vh] left-[5vw] h-[15vh]"
           style={{ animationDuration: "60s" }}
           alt=""
         />
         <img
           src="assets/clouds.svg"
-          className="absolute top-[5vw] left-[50vw] h-[10vh]"
+          className="absolute top-[8vw] left-[50vw] h-[10vh]"
           style={{ animationDuration: "70s", animationDelay: "10s" }}
           alt=""
         />
@@ -151,11 +156,6 @@ function App() {
           style={{ background: "url('assets/shrub.svg') bottom/50% repeat-x" }}
         ></div>
 
-        {/* <div className="absolute left-0 flex items-end justify-between w-full px-[5vw] bottom-[4vh]">
-          <img src="assets/dog.webp" className="h-[150px]" alt="dog" />
-          <img src="assets/cat.webp" className="h-[100px]" alt="cat" />
-        </div> */}
-
         <div
           className="absolute inset-0"
           style={{
@@ -186,13 +186,13 @@ function App() {
 
           <div
             className={
-              "flex gap-2 mb-6 mx-[13vw] text-justify leading-tight mt-4 " +
+              "flex gap-2 mb-6 mx-[5vw] text-justify leading-tight mt-4 " +
               (lang === "z" ? "text-base" : "text-sm")
             }
           >
-            <img src="assets/dog.webp" className="h-[95px]" alt="dog" />
+            <img src="assets/dog.webp" className="h-[110px]" alt="dog" />
             {data.intro[lang]}
-            <img src="assets/cat.webp" className="h-[90px]" alt="dog" />
+            <img src="assets/cat.webp" className="h-[105px]" alt="dog" />
           </div>
 
           <nav className="grid grid-cols-4 gap-[3vmin]">
@@ -218,17 +218,19 @@ function App() {
             ))}
           </nav>
           {data.list.length > 0 ? (
-            <div className="flex justify-center gap-2 mt-6 text-sm">
-              <Button onClick={() => setLang("z")}>中文</Button>
-              <Button onClick={() => setLang("e")}>Eng</Button>
+            <div className="flex justify-center gap-2 mt-6 text-lg">
+              <Button onClick={() => setLang(lang === "z" ? "e" : "z")}>
+                {data.lang[lang === "z" ? "e" : "z"] || "Loading"}
+              </Button>
             </div>
           ) : null}
         </article>
 
-        <article className="absolute inset-0 flex flex-col items-center w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 translate-y-full opacity-0">
+        <article className="absolute inset-0 flex flex-col items-center justify-around w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 translate-y-full opacity-0">
+          <img src="assets/title.svg" className="h-[80px] my-4" alt="title" />
           <Carousel
             ref={carouselRef}
-            className="self-stretch grow"
+            className="self-stretch flex-1"
             onBlur={onBlur}
             onFocus={onFocus}
             prevClassName="active:scale-95 rounded-xl bg-black/30 border-2"
@@ -259,17 +261,16 @@ function App() {
                 </div>
 
                 <div className="flex flex-col h-full p-5 overflow-auto">
-                  <header className="flex items-start justify-between mb-4 text-3xl leading-none text-center">
-                    <div className="w-[6ch]"></div>
-                    <div>{info.h1[lang]}</div>
-                    <div className="w-[5ch] justify-end flex items-center">
+                  <header className="flex items-start justify-center mb-4 text-2xl leading-none text-center">
+                    {info.h1[lang]}
+                    {/* <div className="w-[5ch] justify-end flex items-center">
                       <Button
                         className="text-sm"
                         onClick={() => setLang(lang === "z" ? "e" : "z")}
                       >
                         {lang === "z" ? "Eng" : "中"}
                       </Button>
-                    </div>
+                    </div> */}
                   </header>
 
                   {info.dl.map(([h2, text], i) => (
@@ -307,8 +308,8 @@ function App() {
                       className={
                         "grow mt-4 " +
                         (info.img.length === 1
-                          ? "min-h-[25vh] max-h-[40vh]"
-                          : "min-h-[15vh] max-h-[20vh]")
+                          ? "min-h-[25vh] max-h-[30vh]"
+                          : "min-h-[12vh] max-h-[15vh]")
                       }
                     >
                       <img
@@ -335,12 +336,12 @@ function App() {
             ))}
           </Carousel>
           {/* <SwipeIntro className="mb-3 -mt-10" /> */}
-          <div className="flex items-center justify-center gap-2 mt-6 mb-10 text-sm">
+          <div className="flex items-start justify-center gap-2 mt-2 h-[13vh] text-lg">
             <Button onClick={() => changePage(-1)}>
               &larr; {data.back[lang] || ""}
             </Button>
             <Button onClick={() => setLang(lang === "z" ? "e" : "z")}>
-              {lang === "z" ? "Eng" : "中"}
+              {data.lang[lang === "z" ? "e" : "z"] || "Loading"}
             </Button>
           </div>
         </article>
