@@ -114,6 +114,19 @@ function App() {
         />
         <img src="assets/hksar25.png" className="hidden my-3 mr-2 h-14" alt="" />
       </header> */}
+      <header className="z-10 mt-16">
+        <img src="assets/title.svg" className="h-[90px] mx-auto" alt="title" />
+        <div
+          className={
+            "flex gap-2 mb-1 mx-[3vw] text-justify leading-tight mt-4 " +
+            (lang === "z" ? "text-base" : "text-sm")
+          }
+        >
+          <img src="assets/dog.webp" className="h-[110px]" alt="dog" />
+          {data.intro[lang]}
+          <img src="assets/cat.webp" className="h-[105px]" alt="dog" />
+        </div>
+      </header>
 
       <aside className="fixed left-0 w-full top-[5vh]">
         <img
@@ -181,7 +194,7 @@ function App() {
             >
               {data.title[lang] || "Loading..."}
             </div>
-          </h1> */}
+          </h1> 
           <img src="assets/title.svg" className="h-[100px]" alt="title" />
 
           <div
@@ -193,7 +206,7 @@ function App() {
             <img src="assets/dog.webp" className="h-[110px]" alt="dog" />
             {data.intro[lang]}
             <img src="assets/cat.webp" className="h-[105px]" alt="dog" />
-          </div>
+          </div>*/}
 
           <nav className="grid grid-cols-4 gap-[3vmin]">
             {data.list.map((m, i) => (
@@ -227,7 +240,7 @@ function App() {
         </article>
 
         <article className="absolute inset-0 flex flex-col items-center justify-around w-full h-full p-0 m-0 overflow-hidden transition-all duration-500 translate-y-full opacity-0">
-          <img src="assets/title.svg" className="h-[80px] my-4" alt="title" />
+          {/*<img src="assets/title.svg" className="h-[80px] my-4" alt="title" />*/}
           <Carousel
             ref={carouselRef}
             className="self-stretch flex-1"
@@ -241,7 +254,7 @@ function App() {
             {data.list.map((info, i) => (
               <div
                 key={i}
-                className="relative nest-frame overflow-hidden text-sm leading-tight rounded-xl max-w-[70%] bg-black/50"
+                className="relative nest-frame overflow-hidden text-sm leading-tight rounded-xl max-w-[70%] bg-black/50 my-2"
                 style={{
                   boxShadow:
                     // "0 0 100px rgba(0 0 0/.5), inset 1px 1px 15px black",
@@ -336,7 +349,7 @@ function App() {
             ))}
           </Carousel>
           {/* <SwipeIntro className="mb-3 -mt-10" /> */}
-          <div className="flex items-start justify-center gap-2 mt-2 h-[13vh] text-lg">
+          <div className="flex items-start justify-center gap-2 mt-2 h-[10vh] text-lg">
             <Button onClick={() => changePage(-1)}>
               &larr; {data.back[lang] || ""}
             </Button>
