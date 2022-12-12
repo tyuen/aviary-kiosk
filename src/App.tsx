@@ -122,9 +122,9 @@ function App() {
             (lang === "z" ? "text-base" : "text-sm")
           }
         >
-          <img src="assets/dog.webp" className="h-[110px]" alt="dog" />
+          <img src="assets/dog.webp" className="h-[110px] -mt-6" alt="dog" />
           {data.intro[lang]}
-          <img src="assets/cat.webp" className="h-[105px]" alt="dog" />
+          <img src="assets/cat.webp" className="h-[105px] -mt-6" alt="dog" />
         </div>
       </header>
 
