@@ -25,6 +25,13 @@ const paraColors = [
   "bg-green-500",
 ];
 
+function clickChar(e) {
+  let n: HTMLElement = e.target;
+  let has = n.classList.contains("anim-char1");
+  n.classList[has ? "remove" : "add"]("anim-char1");
+  n.classList[has ? "add" : "remove"]("anim-char2");
+}
+
 function App() {
   const [data, setData] = useState({
     title: {},
@@ -118,32 +125,46 @@ function App() {
         <img src="assets/title.svg" className="h-[90px] mx-auto" alt="title" />
         <div
           className={
-            "flex gap-2 mb-1 mx-[3vw] text-justify leading-tight mt-4 " +
+            "flex justify-between gap-2 mb-1 mx-[3vw] text-justify leading-tight mt-4 " +
             (lang === "z" ? "text-base" : "text-sm")
           }
         >
-          <img src="assets/dog.webp" className="h-[110px] -mt-6" alt="dog" />
+          <div className="shrink-0" style={{ perspective: 200 }}>
+            <img
+              src="assets/dog.webp"
+              className="h-[110px] -mt-6"
+              alt="dog"
+              onClick={clickChar}
+            />
+          </div>
           {data.intro[lang]}
-          <img src="assets/cat.webp" className="h-[105px] -mt-6" alt="dog" />
+          <div className="shrink-0" style={{ perspective: 200 }}>
+            <img
+              src="assets/cat.webp"
+              className="h-[105px] -mt-6"
+              alt="cat"
+              onClick={clickChar}
+            />
+          </div>
         </div>
       </header>
 
       <aside className="fixed left-0 w-full top-[5vh]">
         <img
           src="assets/clouds.svg"
-          className="absolute top-[3vh] left-[5vw] h-[15vh]"
+          className="absolute top-[3vh] left-0 xleft-[5vw] h-[15vh] anim-cloud"
           style={{ animationDuration: "60s" }}
           alt=""
         />
         <img
           src="assets/clouds.svg"
-          className="absolute top-[8vw] left-[50vw] h-[10vh]"
+          className="absolute top-[8vw] left-0 xleft-[50vw] h-[10vh] anim-cloud"
           style={{ animationDuration: "70s", animationDelay: "10s" }}
           alt=""
         />
         <img
           src="assets/clouds.svg"
-          className="absolute top-[5vw] right-[5vw] h-[5vh]"
+          className="absolute top-[5vw] left-0 xright-[5vw] h-[5vh] anim-cloud"
           style={{ animationDuration: "80s", animationDelay: "5s" }}
           alt=""
         />

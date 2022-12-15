@@ -6,16 +6,16 @@
     height="16px"
     viewBox="0 0 18 16">
 <defs>
-  <linearGradient id="gradient0" gradientUnits="objectBoundingBox" x1="0.6" y1="0" x2="0.9" y2="1">
+  <linearGradient id="gradient0" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0.6" y2="1">
     <stop stop-color="#c02" offset="0.65" stop-opacity="1"/>
     <stop stop-color="#902" offset="1" stop-opacity="1"/>
   </linearGradient>
  </defs>
 <path id="shape0" transform="translate(0.381, 2.446)" fill="url(#gradient0)" stroke="#000" stroke-width="0.2" d="M8.19066 3.99327C7.54211 0.730191 8.95227 0.337771 10.6915 0.0354829C12.4306 -0.266805 13.7143 1.44735 13.9053 1.95647C14.0962 2.46558 14.7644 4.87388 15.0826 6.31077C15.4008 7.74767 14.7673 12.2121 10.9807 12.9483C7.19405 13.6845 4.23229 11.7975 3.34108 10.6315C2.74694 9.85411 1.63324 8.67677 0 7.09948L0.986414 6.04943C1.84604 8.07089 2.93852 9.03609 4.26385 8.94503C6.25185 8.80843 8.83921 7.25636 8.19066 3.99327Z" />
 <circle id="shape1" transform="translate(11.88, 4.68)" r="0.72" cx="0.72" cy="0.72" fill="#000" />
-<path id="shape2" transform="translate(13.809, 4.247)" fill="#eb1" stroke="#000" stroke-width="0.36" d="M0.350829 0C1.8731 0.174533 2.6654 0.363745 2.7277 0.567633C2.79001 0.771522 2.21519 1.3833 1.00324 2.40297C0.557203 2.22213 0.250186 1.9163 0.082189 1.48547C-0.0858081 1.05465 0.00373864 0.559494 0.350829 0Z" />
+<path id="shape2" transform="translate(13.809, 4.247)" fill="#eb1" stroke="#000" stroke-width="0.2" d="M0.350829 0C1.8731 0.174533 2.6654 0.363745 2.7277 0.567633C2.79001 0.771522 2.21519 1.3833 1.00324 2.40297C0.557203 2.22213 0.250186 1.9163 0.082189 1.48547C-0.0858081 1.05465 0.00373864 0.559494 0.350829 0Z" />
 <g transform="translate(9 10)">
-  <path fill="#c02" stroke="#000" stroke-width="0.25" transform-origin="50% 0" d="M4.69137 0C4.54244 1.48834 4.29422 2.52964 3.94671 3.12387C3.5992 3.71811 2.45739 4.87163 0.521264 6.58444L0.521264 2.86171L0 0">
+  <path fill="#be0022" stroke="#000" stroke-width="0.25" transform-origin="50% 0" d="M4.69137 0C4.54244 1.48834 4.29422 2.52964 3.94671 3.12387C3.5992 3.71811 2.45739 4.87163 0.521264 6.58444L0.521264 2.86171L0 0">
     <animateTransform attributeName="transform" attributeType="XML" type="scale" values="1 1;1 -1; 1 1" dur="0.3s" repeatCount="indefinite" />
   </path>
 </g>
