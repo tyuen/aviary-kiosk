@@ -129,7 +129,7 @@ function App() {
             (lang === "z" ? "text-base" : "text-sm")
           }
         >
-          <div className="shrink-0" style={{ perspective: 200 }}>
+          <div className="shrink-0 perspect-200">
             <img
               src="assets/dog.webp"
               className="h-[110px] -mt-6"
@@ -138,7 +138,7 @@ function App() {
             />
           </div>
           {data.intro[lang]}
-          <div className="shrink-0" style={{ perspective: 200 }}>
+          <div className="shrink-0 perspect-200">
             <img
               src="assets/cat.webp"
               className="h-[105px] -mt-6"

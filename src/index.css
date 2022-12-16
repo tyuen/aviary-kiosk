@@ -160,6 +160,9 @@ audio[controls] {
   }
 }
 
+.perspect-200 {
+  perspective: 200px;
+}
 .anim-char1 {
   animation: anim-char1 0.6s ease-in-out;
   transform-origin: bottom;

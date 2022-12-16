@@ -35,6 +35,7 @@ if (process.env.NODE_ENV !== "development") {
 }
 
 (n => {
+  var delay = 3 * 24 * 60 * 60000;
   var ticker;
   var tick = () => {
     n.style.top = Math.round(Math.random() * 95) + "vh";
@@ -50,13 +51,13 @@ if (process.env.NODE_ENV !== "development") {
       clearTimeout(ticker);
     }
   };
-  var timer = setTimeout(() => toggle(true), 60000);
+  var timer = setTimeout(() => toggle(true), delay);
   document.body.addEventListener(
     "click",
     e => {
       toggle(false);
       clearTimeout(timer);
-      timer = setTimeout(() => toggle(true), 60000);
+      timer = setTimeout(() => toggle(true), delay);
     },
     false,
   );
